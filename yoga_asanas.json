@@ -1,0 +1,88 @@
+{
+"Integration":{
+"Childs_Pose": "Balasana, Exhale, 2_min",
+"Time": 4,
+"Downward_Facing_Dog": "Adho_Mukha_Svanasana, Exhale, 1_min",
+"Ragdoll_Pose": "Uttanasana, Exhale, 1_min"},
+
+"Intention":{
+ "Time": 4,
+"Stand_at_Attention": "Samasthiti, Exhale, 3Breaths/OM"},
+
+"Sun_Salutation_A":{
+"Time": 10,
+"Mountain_Pose":"Uttanasana, Exhale, 1st_Set:2to3B, 2nd_Set:1Breathe1Movement",
+"Halfway_Lift": "Ardha_Uttanasana, Inhale, 1st_Set:2to3B, 2nd_Set:1Breathe1Movement",
+"High_Plank_to_Mid_Plank": "Chaturanga_Dandasana, Exhale, 1st_Set:2to3B, 2nd_Set:1Breathe1Movement",
+"Upward_Facing_Dog": "Urdhva_Mukha_Svanasana, Inhale, 1st_Set:2to3B, 2nd_Set:1Breathe1Movement",
+"Downward_Facing_Dog": "Adho_Mukha_Svanasana, Exhale, 1st_Set:2to3B, 2nd_Set:1Breathe1Movement"},
+
+"Sun_Salutation_B":{
+"Time": 10,
+"Chair Pose": "Utkatasana, Inhale, 1st_Set:2to3B, 2nd_Set:1Breathe1Movement",
+"Standing_Forward_Fold": "Uttanasana, Exhale, 1st_Set:2to3B, 2nd_Set:1Breathe1Movement",
+"Halfway_Lift": "Ardha_Uttanasana, Inhale, 1st_Set:2to3B, 2nd_Set:1Breathe1Movement",
+"High_Plank_to_Mid_Plank": "Chaturanga_Dandasana, Exhale, 1st_Set:2to3B, 2nd_Set:1Breathe1Movement",
+"Upward_Facing_Dog": "Urdhva_Mukha_Svanasana, Inhale, 1st_Set:2to3B, 2nd_Set:1Breathe1Movement",
+"Downward_Facing_Dog": "Adho_Mukha_Svanasana, Exhale, '1st_Set:2to3B, 2nd_Set:1Breathe1Movement",
+"Warrior _Two": "Virabhadrasana_II, Inhale, 1st_Set:2to3B, 2nd_Set:1Breathe1Movement",
+"Extended_Side_Angle": "Utthita_Parsvakonasana, Exhale, 1st_Set:2to3B, 2nd_Set:1Breathe1Movement",
+"Reverse_Warrior": "Parivrtta_Virabhadrasana_II, Inhale, 1st_Set:2to3B, 2nd_Set:1Breathe1Movement",
+"High_Plank_to_Mid_Plank": "Chaturanga_Dandasana, Exhale, 1st_Set:2to3B, 2nd_Set:1Breathe1Movement"},
+
+"Core_Strengthening_Series":{
+"Time": 10,
+"Reclined_Bound_Angle_Pose_Sit_Ups": "Exhale, 30_seconds",
+"Bicycle_Sit_Ups": "1_minute",
+"Boat_Pose": "Navasana, 2to3Breaths"},
+
+"Crescent_Lunge_Series":{
+"Time": 10,
+"Crescent_Lunge_Pose": "Anjaneyasana, Inhale, 2to3Breaths",
+"Revolved_Crescent_Lunge": "Parivrtta_Anjaneyasana, Exhale, 2to3Breaths",
+"Runner's_Lunge": "Exhale, 2to3Breaths",
+"Side_Plank": "Vasisthasana, Inhale, 2to3Breaths",
+"Prayer_Twist": "Parivrtta_Utkatasana, Exhale, 2to3Breaths",
+"Hands_to_Feet_Pose_(Gorilla_Variation)": "Padhastasana, Exhale, 2to3Breaths",
+"Crow_Pose": "Bakasana, Inhale, 2to3Breaths"},
+
+"Balancing_Series":{
+"Time": 10,
+"Eagle_Pose": "Garudasana, Exhale, 2to3Breaths",
+"Dancer's Pose": "Natarajasana, Exhale, 2to3Breaths",
+"Tree_Pose": "Vrksasana, Inhale, 2to3Breaths"},
+
+"Triangle_Series":{
+"Time": 10,
+"Warrior_One": "Virabhadrasana_I, Inhale, 2to3Breaths",
+"Warrior_Two": "Virabhadrasana_II, Exhale, 1Breath",
+"Triangle_Pose": "Trikonasana, Exhale, 2to3Breaths",
+"Wide_Leg_Forward_Fold": "Prasarita_Padottanasana, Exhale, 2to3Breaths"},
+
+"Hip_Opener_Series":{
+"Time": 10,
+"Half_Pigeon": "Eka_Pada_Rajakapotasana, Exhale, 2to3Breaths"},
+
+"Spine_Strengthening_Series":{
+"Time": 10,
+"Cobra_Pose": "Bhujangasana, Inhale, 2to3Breaths",
+"Bow_Pose": "Floor_Bow, Dhanurasana, Inhale, 2to3Breaths",
+"Camel_Pose": "Ustrasana, Exhale, 2to3Breaths",
+"Bridge_Pose": "Setu_Bandha_Sarvangasana, Inhale, 2to3Breaths"},
+
+"Forward_Fold_Series":{
+"Time": 10,
+"Seated_Forward_Fold": "Paschimottanasana, Exhale, 2to3Breaths"},
+
+"Surrender_Series":{
+"Time": 10,
+"Happy_Baby_Pose": "Ananda_Balasana, Exhale, 2to3Breaths",
+"Supine_Twist": "Jathara_Parivartanasana, Exhale, 2to3Breaths",
+"Corpse_Pose": "Savasana, Natural_Breathing",
+"Fetal_Pose": "Natural_Breathing",
+"Easy_Pose": "Thumbs_to_forehead_center, Inhale, Natural_Breathing"},
+
+"Namaste":{ 
+"Time": 10,
+"Namaste":"The_light_in_me_honors_the_light_in_you, Exhale, Bow_forward"}
+}
