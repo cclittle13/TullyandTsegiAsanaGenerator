@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ratings</title>
+</head>
+
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/asanas">Tully and Tsegi's Asana Generator</a>
+      </div>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="/about">About</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        {% if session %}
+
+        <li><a href="/logout">Logout</a></li>
+
+        {% else %}
+        <li><a href="/sign-in">Login</a></li>
+        <li><a href="/sign-up">Sign Up</a></li>
+
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container">
+    <ul>
+    {% for message in get_flashed_messages() %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+
+
+  {% block content %} put your content here {% endblock %}
+</div>
+
+</body>
+</html>

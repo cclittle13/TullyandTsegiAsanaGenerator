@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+
+ <h1>About Page</h1>
+    <div id="gallery">
+        {% for image in images %}
+            <div>
+                <img src="{{ image.url }}" alt="a pretty image you can favorite">
+
+{% endblock %}
