@@ -81,12 +81,17 @@ IMAGES = [
 #     return jsonify(status="success", id=photo_id)
 
 
-
 @app.route('/')
 def index():
     """Return welcome page."""
 
     return render_template("welcome.html", welcome=WELCOME)
+
+# @app.route('/')
+# def index():
+#     """Return welcome page."""
+
+#     return render_template("welcome.html", welcome=WELCOME)
 
 @app.route('/asanas')
 def asana_list():

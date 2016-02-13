@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
+{% block content %}
+
+
 <head>
     <meta charset="UTF-8">
-    <title>TullyandTsegi'sAsanaGenerator</title>
+    <title>Fake Pinterest</title>
 
-    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+  
     <script src="/static/js/favorites.js"></script>
 
     <style>
@@ -32,14 +34,21 @@
     </style>
 </head>
 <body>
-    <h1>Gallery</h1>
+    <h1>ASANAS</h1>
+<!--     <img id="test" src="static/images/awkward.png" alt="Insert im"> -->
     <div id="gallery">
         {% for image in images %}
             <div>
-                <img src="{{ image.url }}" alt="a pretty image you can favorite">
+                <img src="{{ image.url }}" alt="Insert im">
                 <button id="{{ image.id }}" class="favorite-btn">&hearts; Favorite</button>
             </div>
+            <!-- <div>
+                <img src="{{ image.url }}" alt="Insert im">
+                <button id="{{ image.id }}" class="favorite-btn">&stars; Favorite</button>
+            </div> -->
         {% endfor %}
     </div>   
 </body>
 </html>
+
+{% endblock %}

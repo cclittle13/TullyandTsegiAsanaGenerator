@@ -1,13 +1,36 @@
+// $(function (){ // this is the jquery shortcut for document.ready()
+
+//     function addToSequence(evt){
+
+//         var id = this.id; // this is the id on the button we clicked, which is the image's id
+
+//         $.post("/add-to-sequence", {'id': id}, addToSequenceSuccess);
+//     }
+
+//     function addToSequenceSuccess(result){
+
+//         console.log(result.status);
+
+//         var id = result.id;
+
+//         $('#' + id).css('color', 'red'); // give our user some feedback
+//     }
+
+//     $('.favorite-btn').click(addToSequence);
+
+// })
+
+
 $(function (){ // this is the jquery shortcut for document.ready()
 
-    function addToSequence(evt){
+    function addToFavorites(evt){
 
         var id = this.id; // this is the id on the button we clicked, which is the image's id
 
-        $.post("/add-to-sequence", {'id': id}, addToSequenceSuccess);
+        $.post("/add-to-favorites", {'id': id}, addToFavoritesSuccess);
     }
 
-    function addToSequenceSuccess(result){
+    function addToFavoritesSuccess(result){
 
         console.log(result.status);
 
@@ -16,6 +39,6 @@ $(function (){ // this is the jquery shortcut for document.ready()
         $('#' + id).css('color', 'red'); // give our user some feedback
     }
 
-    $('.favorite-btn').click(addToSequence);
+    $('.favorite-btn').click(addToFavorites);
 
 })

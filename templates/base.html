@@ -1,56 +1,116 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ratings</title>
+
+    <title>YOGA ASANAS</title>
+
+    <!-- Bootstrap -->
+    <link href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.4/cyborg/bootstrap.min.css"
+          rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Frijole' rel='stylesheet' type='text/css'>
+    <style>
+        h1, h2, h3, .navbar-brand { font-family: "Times"; }
+
+        
+        #homepage-title {
+            margin: 0;
+            top: 0.5em;
+            width: 100%;
+            text-align: center;
+            color: black;
+            font-weight: 400;
+            font-size: 500%;
+        }
+
+        html, body {
+          width: 100%;
+          height: 100%;
+          margin: 0;
+          background-color: pink; 
+        }
+
+        #homepage-block {
+          width: 100%;
+          height: 100%;
+          margin: 0;
+          padding: 0;
+          background-image: url("/static/sauron.jpg");
+          background-size: 100%;
+        }
+
+        #extending {
+                      margin: 0px;
+                      padding: 0px;
+                      /*background-color: yellow /*#B22222*/;*/
+                      width: 100%;
+                      height: 100%;
+                   }
+
+        .spaced {
+          margin-left:20px; 
+          margin-top: 20px;
+        }
+
+    </style>
 </head>
-
 <body>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
+<nav class="navbar navbar-inverse" style="margin-bottom: 0px">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/asanas">
+                <span class="glyphicon glyphicon-heart-empty"></span>
+                BUILD YOUR SEQUENCE 
+            </a>
+        </div>
 
-      <div class="navbar-header">
-        <a class="navbar-brand" href="/asanas">Tully and Tsegi's Asana Generator</a>
-      </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse"
+             id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="/about">About</a></li>
+                <li><a href="/users">View All Poses</a></li>
+                <li><a href="/movies">View All Sequences</a></li>
+                <li><a href-"/map">View Map</a><li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              {% if "user_id" in session %}
+                  <li><a href="/users/{{ session['user_id'] }}">Profile</a></li>
+                  <li><a href="/logout">Logout</a></li>
+              {% else %}
+                  <li><a href="/register">Register</a></li>
+                  <li><a href="/login">Login</a></li>
+              {% endif %}
+
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li><a href="/about">About</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        {% if session %}
-
-        <li><a href="/logout">Logout</a></li>
-
-        {% else %}
-        <li><a href="/sign-in">Login</a></li>
-        <li><a href="/sign-up">Sign Up</a></li>
-
-        {% endif %}
-      </ul>
-    </div>
-  </div>
+    <!-- /.container-fluid -->
 </nav>
-
-
-<div class="container">
-    <ul>
-    {% for message in get_flashed_messages() %}
-      <li>{{ message }}</li>
+<div id="extending">
+    {% for flash in get_flashed_messages() %}
+      <div class="alert alert-danger" style="width:90%; margin:0 auto;">{{ flash }}</div>
     {% endfor %}
-    </ul>
-
-
-  {% block content %} put your content here {% endblock %}
+{% block content %}
+{% endblock %}
 </div>
+
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script> -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="/static/js/favorites.js"></script>
 
 </body>
 </html>
