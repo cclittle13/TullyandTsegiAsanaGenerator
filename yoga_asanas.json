@@ -1,7 +1,7 @@
-'{
+{
 "Integration":{
-"Childs_Pose": "Balasana, Exhale, 2_min",
-"Time": 4,
+"Childs_Pose": ["Balasana", "Exhale", "2_min"],
+// "Time": 4,
 "Downward_Facing_Dog": "Adho_Mukha_Svanasana, Exhale, 1_min",
 "Ragdoll_Pose": "Uttanasana, Exhale, 1_min"},
 
@@ -11,7 +11,7 @@
 
 "Sun_Salutation_A":{
 "Time": 10,
-"Mountain_Pose":"Uttanasana, Exhale, 1st_Set:2to3B, 2nd_Set:1Breathe1Movement",
+"Mountain_Pose":["Uttanasana", "Exhale", "1st_Set:2to3B, 2nd_Set:1Breathe1Movement"],
 "Halfway_Lift": "Ardha_Uttanasana, Inhale, 1st_Set:2to3B, 2nd_Set:1Breathe1Movement",
 "High_Plank_to_Mid_Plank": "Chaturanga_Dandasana, Exhale, 1st_Set:2to3B, 2nd_Set:1Breathe1Movement",
 "Upward_Facing_Dog": "Urdhva_Mukha_Svanasana, Inhale, 1st_Set:2to3B, 2nd_Set:1Breathe1Movement",
@@ -85,4 +85,4 @@
 "Namaste":{ 
 "Time": 10,
 "Namaste":"The_light_in_me_honors_the_light_in_you, Exhale, Bow_forward"}
-}'
+}

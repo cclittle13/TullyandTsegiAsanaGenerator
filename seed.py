@@ -10,39 +10,55 @@ from server import app
 
 # data_dict = json.loads("yoga_asanas.json")
 
-
 # class Category(db.Model):
 #     """Categories of segments of poses in the sequence."""
 
 #     __tablename__ = "categories"
 
 #     category_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-#     category_name = db.Column(db.String(100), nullable=False )
+#     category_name = db.Column(db.String(100), nullable=False )Ca
 
 
-def load_categories():
+def load_categories(data_dict):
     """Loads categories from yoga_asanas.json file"""
 
-    data_dict = json.loads(open("yoga_asanas.json"))
-    for key in data_dict:
-        new_category = Category(category_name=key)
+    # import pdb; pdb.set_trace()
+    # data = open("yoga_asanas.json")
+    # data_dict = json.load(data)
+    # print data_dict
+
+    for category in data_dict:
+        new_category = Category(category_name=category)
+        print new_category
         db.session.add(new_category)
 
     db.session.commit()
 
 
-data_dict = json.loads(open("yoga_asanas.json"))
-print data_dict
+def load_poses(data_dict):
+    """Load poses from yoga_asanas.json file"""
 
-# if __name__ == "__main__":
-#     # As a convenience, if we run this module interactively, it will leave
-#     # you in a state of being able to work with the database directly.
+    for category, value in data_dict:
+        category_id = Category.query.filter_by(category_name=category)
+        for pose, details in value:
+            # pose_name = pose
+            pose_list_time = details[2]
+            new_pose = Pose(pose_name=pose, pose_list_time=pose_list_time, category_id=category_id)
+            db.session.add(new_pose)
 
-    
-#     connect_to_db(app)
-#     db.create_all()
-#     load_categories()
-#     print "Connected to DB."
+    db.session.commit()
+
+
+if __name__ == "__main__":
+    # As a convenience, if we run this module interactively, it will leave
+    # you in a state of being able to work with the database directly.
+
+    data = open("yoga_asanas.json")
+    data_dict = json.load(data)
+    connect_to_db(app)
+    db.create_all()
+    load_categories(data_dict)
+    print "Connected to DB."
 
 
 # def load_users():

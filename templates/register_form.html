@@ -1,16 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
-
-<h1>ABOUT PAGE </h1>
-<h1>Website Instructions</h1>
-
-<p><a href="/about"></a></p>
-
 <div class="well spaced" style="width:40%;">
+<h1>Register</h1>
 
-<h1>POSE DETAIL</h1>
-
-<!-- <form action="MORE INFO" method="POST">
+<form action="register" method="POST">
 
     <div class="form-group">
         <label>
@@ -26,12 +19,12 @@
         </label>
     </div>
 
-    <div class="form-group">
+    <!-- <div class="form-group">
         <label>
             Age
             <input type="number" name="age" class="form-control">
         </label>
-    </div>
+    </div> -->
 
     <div class="form-group">
         <label>
@@ -39,14 +32,11 @@
             <input type="text" name="zipcode" class="form-control">
         </label>
     </div>
- -->
+
     <div class="form-group">
-        <input type="submit" class="btn btn-info"> MORE INFO</button>
+        <input type="submit" value="Register" class="btn btn-success">
     </div>
 
 </form>
 </div>
-
-<!-- <button type="button" class="btn btn-info">Info</button> --> 
-
 {% endblock %}
