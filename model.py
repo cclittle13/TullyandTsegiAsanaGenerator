@@ -22,8 +22,8 @@ class User(db.Model):
     user_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     email = db.Column(db.String(64), nullable=True)
     password = db.Column(db.String(64), nullable=True)
-    age = db.Column(db.Integer, nullable=True)
-    zipcode = db.Column(db.String(15), nullable=True)
+    # age = db.Column(db.Integer, nullable=True)
+    # zipcode = db.Column(db.String(15), nullable=True)
 
 # CREATE TABLE poses (
 #     pose_id SERIAL PRIMARY KEY, 
@@ -47,10 +47,10 @@ class Pose(db.Model):
     pose_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     pose_name = db.Column(db.String(100), nullable=False )
     # pose_name = db.Column(db.String(100),nullable=False )
-    pose_list = db.Column(db.String(500), nullable=False )
-    category_id = db.Column(db.Integer, nullable=False )
-    pose_list_time = db.Column(db.Integer, nullable=False )
-    image_file_name = db.Column(db.String(100), nullable=False )
+    pose_list = db.Column(db.String(500), nullable=True )
+    category_id = db.Column(db.Integer, nullable=True)
+    pose_list_time = db.Column(db.Integer, nullable=True)
+    image_file_name = db.Column(db.String(100), nullable=True )
 
     # def __repr__(self):
     #     """Provide helpful representation when printed."""

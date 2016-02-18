@@ -19,6 +19,24 @@ from server import app
 #     category_name = db.Column(db.String(100), nullable=False )Ca
 
 
+def load_users():
+    """
+    load fake users from user.csv into database
+    """
+
+    #yoga_users is a csv file 
+    users_file = open("yoga_users")
+
+    for line in users_file:
+        line = line.rstrip()
+        line = line.split(",")
+        a_user = User(email=line[0],
+                      password=line[1])
+        db.session.add(a_user)
+
+    db.session.commit()
+
+
 def load_categories(data_dict):
     """Loads categories from yoga_asanas.json file"""
 
@@ -35,29 +53,41 @@ def load_categories(data_dict):
     db.session.commit()
 
 
-def load_poses(data_dict):
-    """Load poses from yoga_asanas.json file"""
+# def load_poses(data_dict):
+#     """Load poses from yoga_asanas.json file"""
 
-    for category, value in data_dict:
-        category_id = Category.query.filter_by(category_name=category)
-        for pose, details in value:
-            # pose_name = pose
-            pose_list_time = details[2]
-            new_pose = Pose(pose_name=pose, pose_list_time=pose_list_time, category_id=category_id)
-            db.session.add(new_pose)
+#     for category, value in data_dict:
+#         category_id = Category.query.filter_by(category_name=category)
+#         for pose, details in value:
+#             # pose_name = pose
+#             pose_list_time = details[2]
+#             new_pose = Pose(pose_name=pose, pose_list_time=pose_list_time, category_id=category_id)
+#             db.session.add(new_pose)
 
-    db.session.commit()
+#     db.session.commit()
 
+
+#     for category in data_dict:
+#     ...     for poses in data_dict[category]:
+#     ...             for steps in data_dict[poses]:
+#     ...                     print steps
+
+
+# >>> for category in data_dict:
+# ...             print data_dict[poses]
 
 if __name__ == "__main__":
     # As a convenience, if we run this module interactively, it will leave
     # you in a state of being able to work with the database directly.
-
+    users_file = open("./seed_data/users.csv.odt")
     data = open("yoga_asanas.json")
+    print data
     data_dict = json.load(data)
     connect_to_db(app)
     db.create_all()
     load_categories(data_dict)
+    # load_poses(data_dict)
+    load_users()
     print "Connected to DB."
 
 

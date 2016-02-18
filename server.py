@@ -2,7 +2,8 @@
 
 
 # from javascript3demo
-from flask import Flask, request, render_template, jsonify
+from flask import (Flask, render_template, redirect,
+                   request, flash, session, jsonify)
 import jinja2
 # from ratings
 # from flask import Flask, render_template, request, flash, redirect, session
@@ -127,12 +128,168 @@ def add_to_favorites():
 
 #     return jsonify(status="success", id=photo_id)
 
+# @app.route('/login', methods=['GET'])
+# def login_form():
+#     """Show login form."""
 
-@app.route('/register', methods=['GET'])
-def register_form():
-    """Show form for user signup."""
+#     return render_template("login_form.html")
+
+
+
+@app.route("/login", methods=["POST", "GET"])
+def login_form():
+    """
+    GET - displays a form that asks for email and password
+    POST - collects that data and authenticates --> redirect to user profile
+    """
+
+    if request.method == "POST":
+        email = request.form["username_input"]
+        password = request.form["password_input"]
+        user_object = User.query.filter(User.email == email).first()
+
+        if user_object:
+            if user_object.password == password:
+                session["login"] = email
+                flash("You logged in successfully")
+                return redirect("/profile")
+            else:
+                flash("Incorrect password. Try again.")
+                return redirect("/login")
+        else:
+            flash("""We do not have this email on file.
+                Click Register if you would like to create an account.""")
+            return redirect("/register")
+
+    return render_template("login_form.html")
+
+
+@app.route("/logout")
+def logout():
+    """
+    Logout - link removes User from session and redirects to homepage.
+    Flashes message confirming that User has logged out.
+    """
+
+    session.pop("login")
+    flash("You've successfully logged out. Goodbye.")
+    return redirect("/")
+
+
+
+# @app.route('/register', methods=['GET'])
+# def register_form():
+#     """Show form for user signup."""
+
+#     return render_template("register_form.html")
+
+
+@app.route("/register", methods=["GET", "POST"])
+def registration_form():
+    """
+    GET - Displays a form for new users to enter login info & connect to Mint
+    POST - adds registration data to DB --> redirect to transaction analysis
+    (or choose to browse challenges --> redirect to challenge browser tool)
+    """
+
+    if request.method == "POST":
+
+        # firstname = request.form["firstname"]
+        # lastname = request.form["lastname"]
+        email = request.form["email"]
+        password = request.form["password"]
+        # age = request.form["age"]
+        # zipcode = request.form["zipcode"]
+
+        if User.query.filter(User.email == email).first():
+            flash("""Hmm...we already have your email account on file.
+                  Please log in.""")
+            return redirect("/login")
+        else:
+            new_user = User(email=email, password=password)
+            db.session.add(new_user)
+            db.session.commit()
+
+            session["login"] = email
+            # keyring.set_password("system", mint_username, mint_password)
+
+            flash("Thanks for creating an account!")
+            return redirect("/")
 
     return render_template("register_form.html")
+
+
+# @app.route('/login', methods=['GET'])
+# def login_form():
+#     """Show login form."""
+
+# @app.route('/login-process', methods=['POST'])
+# def process_login():
+#     """Handle form submission for login process."""
+
+#     attempted_username = request.form.get('username').strip().lower()
+#     attempted_password = request.form.get('password')
+
+#     user = User.query.filter(User.username == attempted_username).first()
+
+#     if (user is None) or not attempted_username:
+#         flash("Nonexistent user. Please retry log in.")
+#         return redirect('/login')
+
+#     elif attempted_password == user.password:
+#         session['user_id'] = user.user_id
+#         session['username'] = user.username
+
+#         flash("Successful log in! Welcome {}.".format(user.username))
+#         return redirect('/navigation')
+
+#     else:
+#         flash("Invalid password.")
+#         return redirect('/login')
+
+
+# @app.route('/signup-process', methods=['POST'])
+# def process_signup():
+#     """Handle form submission for signup process."""
+
+#     attempted_username = request.form.get('username').strip().lower()
+#     attempted_email = request.form.get('email')
+#     attempted_password = request.form.get('password')
+
+#     user = User.query.filter(User.username == attempted_username).first()
+
+#     if (user is None) and attempted_username:
+#         # User not already existing, and a username was entered
+#         user = User(username=attempted_username,
+#                     email=attempted_email,
+#                     password=attempted_password)
+#         db.session.add(user)
+#         db.session.commit()
+
+#         flash("Sign up successful! Now log in.")
+#         return redirect('/login')
+
+#     else:
+#         flash("Invalid sign up attempt.")
+#         return redirect('/login')
+
+
+# @app.route('/logout-process')
+# def process_logout():
+#     """Handle form submission for logout process."""
+
+#     session.pop('user_id', None)
+
+#     # flash message: logout successs
+#     flash("Successful log out. Goodbye!")
+#     return redirect('/')
+
+
+# @app.route('/register', methods=['GET'])
+# def register_form():
+#     """Show form for user signup."""
+
+#     return render_template("register_form.html")
 
 
 # @app.route('/register', methods=['POST'])
@@ -153,12 +310,6 @@ def register_form():
 #     flash("User %s added." % email)
 #     return redirect("/users/%s" % new_user.user_id)
 
-
-@app.route('/login', methods=['GET'])
-def login_form():
-    """Show login form."""
-
-    return render_template("login_form.html")
 
 
 # @app.route('/login', methods=['POST'])
