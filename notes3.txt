@@ -1,0 +1,44 @@
+pose
+
+sequence
+
+program
+    poses
+    sequences
+
+
+sequence 1 - pose 1, 2, 3
+sequence 4 - pose 4, 5, 6
+pose 45
+pose 324
+sequence 9 - pose 9, 10, 11
+pose 1000
+
+----------------
+
+programs
+--------
+id
+
+pose
+----
+id
+name
+
+sequence
+--------
+id
+name
+
+poses_sequences
+---------------
+pose_id
+sequence_id
+order
+
+program_elements
+----------------
+program_id
+element_type (sequence, pose)
+element_id
+order

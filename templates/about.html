@@ -10,11 +10,56 @@
 
 <h1>POSE DETAIL</h1>
 
-<!-- <form action="MORE INFO" method="POST">
+
+<form method = "post" action = "<?php $_PHP_SELF ?>">
+              <table width = "400" border = "0" cellspacing = "1" 
+                 cellpadding = "2">
+
+    <form action="/sequence/" method="post">
+    <label for="integration_question1">Do you want to add the Integration Series? </label>
+   <!--  <input id ="integration_question1" type ="" name ="Do you want to add the Integration Series?"> -->
+    <input type="submit" value="Yes">
+              
+                 <tr>
+                    <td width = "100">Employee Name</td>
+                    <td><input name = "emp_name" type = "text" 
+                       id = "emp_name"></td>
+                 </tr>
+              
+                 <tr>
+                    <td width = "100">Employee Address</td>
+                    <td><input name = "emp_address" type = "text" 
+                       id = "emp_address"></td>
+                 </tr>
+              
+                 <tr>
+                    <td width = "100">Employee Salary</td>
+                    <td><input name = "emp_salary" type = "text" 
+                       id = "emp_salary"></td>
+                 </tr>
+              
+                 <tr>
+                    <td width = "100"> </td>
+                    <td> </td>
+                 </tr>
+              
+                 <tr>
+                    <td width = "100"> </td>
+                    <td>
+                       <input name = "add" type = "submit" id = "add" 
+                          value = "Add Employee">
+                    </td>
+                 </tr>
+              
+              </table>
+           </form>
+
+
+<form action="MORE INFO" method="POST">
 
     <div class="form-group">
         <label>
-            Email
+            
             <input type="email" name="email" class="form-control">
         </label>
     </div>
@@ -39,7 +84,7 @@
             <input type="text" name="zipcode" class="form-control">
         </label>
     </div>
- -->
+
     <div class="form-group">
         <input type="submit" class="btn btn-info"> MORE INFO</button>
     </div>
@@ -59,6 +104,46 @@
         total_practice.append("Integration")
         total_time += data['Integration']['Time']> -->
     <input type="submit" value="OK">
+
+<!-- 
+
+     <form method = "post" action = "<?php $_PHP_SELF ?>">
+                  <table width = "400" border = "0" cellspacing = "1" 
+                     cellpadding = "2">
+                  
+                     <tr>
+                        <td width = "100">Employee Name</td>
+                        <td><input name = "emp_name" type = "text" 
+                           id = "emp_name"></td>
+                     </tr>
+                  
+                     <tr>
+                        <td width = "100">Employee Address</td>
+                        <td><input name = "emp_address" type = "text" 
+                           id = "emp_address"></td>
+                     </tr>
+                  
+                     <tr>
+                        <td width = "100">Employee Salary</td>
+                        <td><input name = "emp_salary" type = "text" 
+                           id = "emp_salary"></td>
+                     </tr>
+                  
+                     <tr>
+                        <td width = "100"> </td>
+                        <td> </td>
+                     </tr>
+                  
+                     <tr>
+                        <td width = "100"> </td>
+                        <td>
+                           <input name = "add" type = "submit" id = "add" 
+                              value = "Add Employee">
+                        </td>
+                     </tr>
+                  
+                  </table>
+               </form> -->
 
 
 <!--     integration_question1 = raw_input ("Do you want to add the Integration Series? ")

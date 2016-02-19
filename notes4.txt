@@ -1,0 +1,59 @@
+DENORMALIZED SCHEMA
+===================
+
+poses
+------
+1 poseA
+2 poseB
+
+sequences
+---------
+1 sunA
+
+poses_sequences
+---------------
+pose_id | sequence_id | order
+2       | 1           | 1
+1       | 1           | 2
+
+programs
+--------
+42
+
+program_elements
+----------------
+program_id | element_type | element_id | order
+42         | sequence     | 1          | 1
+42         | sequence     | 4          | 2
+42         | pose         | 45         | 3
+
+NORMALIZED
+==========
+
+programs
+--------
+id
+list TEXT
+
+[PoseModel.find(3), SequenceModel.find(52)]
+
+{
+    "program": [{
+        "element_type": "sequence",
+        "element_id": 3,
+        "time": 30
+    }]
+}
+
+sequences
+---------
+id | sequence_data
+1  | '[6,42,102,23]'
+
+s = SequenceModel.find(1)
+pose_ids = json.loads(s.sequence_json)
+poses = Pose.find(pose_ids)
+
+s2 = SequenceModel()
+s2.sequence_json = json.dumps([1,2,3])
+s2.save()

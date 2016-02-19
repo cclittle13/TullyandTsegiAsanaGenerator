@@ -1,0 +1,38 @@
+class PoseGenerator
+    def initialize(params)
+        this.poses = params.pose_ids
+        this.randomFunc = param.randomFunc
+        PoseModel.find_by_ids(this.poses)
+    end
+
+    def poses
+        this.randomFunc(this.poses)
+    end
+end
+
+def randomize(array):
+    array.shuffle()
+
+def fake_randomize(array):
+    array.reverse()
+
+@app.route("/generate_sequence")
+def generate_sequence():
+    # request.form['selected_pose_ids']
+    generator = PoseGenerator.new(pose_ids=request.form['selected_pose_ids'], randomFunc=randomize)
+
+    all_the_data = generator.poses()
+
+    return jsonify(all_the_data)
+
+# pose_generator_tests.py
+
+def basic_test():
+  g = PoseGenerator.new(pose_ids=[1,2,3], randomFunc=fake_randomize)
+
+  expected = [PoseModel.find(3), PoseModel.find(2), PoseModel.find(1)]
+  result = g.poses()
+
+  print "Expected: " + jsonify(expected)
+  print "Result: " + jsonify(result)
+

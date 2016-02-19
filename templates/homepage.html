@@ -36,14 +36,20 @@
 <body>
     <h1>ASANAS</h1>
 <!--     <img id="test" src="static/images/awkward.png" alt="Insert im"> -->
+<form action="\sequence">
+    Check the poses you like:
     <div id="gallery">
         {% for image in images %}
             <div>
+                <label><input type="checkbox" name="poses" value="{{ image.id }}">{{ image.name }}</label>
+                <button><a href="">More details</a></button>
                 <img src="{{ image.url }}" alt="Insert im">
-                <button id="{{ image.id }}" class="favorite-btn">&hearts; Favorite</button>
-                <button id="{{ image.id }}" class="favorite-btn">&#9728; Pose Detail</button>
+               <!--  <button id="{{ image.id }}" class="favorite-btn">&hearts; Favorite</button>
+                <button id="{{ image.id }}" class="favorite-btn">&#9728; Pose Detail</button> -->
              <!--    <input type="submit" class="btn btn-primary"></button> -->
             </div>
+
+
             <!-- <div>
                 <img src="{{ image.url }}" alt="Insert im">
                 <button id="{{ image.id }}" class="favorite-btn">&stars; Favorite</button>
@@ -55,7 +61,10 @@
             </div> -->
 
         {% endfor %}
-    </div>   
+    </div>
+     <input type="submit">
+
+    </form>   
 </body>
 </html>
 

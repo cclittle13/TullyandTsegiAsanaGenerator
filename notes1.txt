@@ -1,0 +1,11 @@
+user clicks "Create New"
+browser loads "/programs/new"
+server create a new Program record with an id
+server redirects to "/programs/:id"
+browser shows ui for favorite poses
+user selected poses
+user clicks "generate"
+browser loads "/programs/:id/generate"
+server selectes poses for the program and stores in the database
+server redirects to "/programs/:id"
+browser shows generated program
