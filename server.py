@@ -15,15 +15,15 @@ app = Flask(__name__)
 
 IMAGES = [
     { "id": 1, "name": "Child's Pose", "url": "http://www.pocketyoga.com/images/poses/child_traditional.png"},
-    { "id": 2, "name": "Downward Dog", "url": "http://www.pocketyoga.com/images/poses/downward_dog.png"},
+    { "id": 2, "name": "Downward Facing Dog", "url": "http://www.pocketyoga.com/images/poses/downward_dog.png"},
     { "id": 3, "name": "Ragdoll", "url": "http://www.pocketyoga.com/images/poses/forward_bend.png"},
     { "id": 4, "name": "Samasthiti", "url": "http://www.pocketyoga.com/images/poses/chair_prayer.png"},
     { "id": 5, "name": "Mountain Pose", "url": "http://www.pocketyoga.com/images/poses/child_traditional.png"},
     { "id": 6, "name": "Standing Forward Fold", "url": "http://www.pocketyoga.com/images/poses/downward_dog.png"},
     { "id": 7, "name": "Halfway Lift", "url": "http://www.pocketyoga.com/images/poses/forward_bend.png"},
     { "id": 8, "name": "Chaturanga Dandasana", "url": "http://www.pocketyoga.com/images/poses/chair_prayer.png"},
-    { "id": 9, "name": "Upward Dog", "url": "http://unsplash.it/380/200"},
-    { "id": 10, "name": "Downward Dog", "url": "http://unsplash.it/360/200"},
+    { "id": 9, "name": "Upward Facing Dog", "url": "http://unsplash.it/380/200"},
+    { "id": 10, "name": "Table Pose", "url": "http://unsplash.it/360/200"},
     { "id": 11, "name": "Chair Pose", "url": "http://unsplash.it/380/200"},
     { "id": 12, "name": "Warrior 2", "url": "http://unsplash.it/320/200"},
     { "id": 13, "name": "Extended Side Angle", "url": "http://unsplash.it/300/200"},
@@ -45,10 +45,10 @@ IMAGES = [
     { "id": 29, "name": "Triangle Pose", "url": "http://unsplash.it/300/200"},
     { "id": 30, "name": "Prasarita Pose", "url": "http://unsplash.it/290/200"},
     { "id": 31, "name": "Half Pigeon", "url": "http://unsplash.it/350/200"},
-    { "id": 32, "name": "Cobra", "url": "http://unsplash.it/380/200"},
+    { "id": 32, "name": "Cobra Pose", "url": "http://unsplash.it/380/200"},
     { "id": 33, "name": "Floor Bow", "url": "http://unsplash.it/360/200"},
     { "id": 34, "name": "Camel Pose", "url": "http://unsplash.it/380/200"},
-    { "id": 35, "name": "Reclined Boung Angle Pose", "url": "http://unsplash.it/320/200"},
+    { "id": 35, "name": "Reclined Bound Angle Pose", "url": "http://unsplash.it/320/200"},
     { "id": 36, "name": "Seated Forward Fold", "url": "http://unsplash.it/300/200"},
     { "id": 37, "name": "Happy Baby Pose", "url": "http://unsplash.it/290/200"},
     { "id": 38, "name": "Supine Twist", "url": "http://unsplash.it/350/200"},
@@ -82,6 +82,29 @@ def index():
     
     # movies = Movie.query.order_by('title').all()
     return render_template("welcome.html", images=IMAGES)
+
+
+@app.route("/process_login")
+def process_login():
+
+    username = request.args.get("username")
+
+    existing_user = User.query.filter(User.username == username).first()
+    if existing_user is None:
+        flash("Username incorrect. Please re-enter")
+        return redirect("/")
+    else:
+        session["user_id"] = existing_user.user_id
+        return redirect("/home")
+
+@app.route("/home")
+def show_homepage():
+    """Show homepage of logged in commuKNITty user"""
+
+    user = User.query.get(session["user_id"])
+
+
+    return render_template("homepage.html", user=user)
 
 @app.route("/asanas")
 def image_list():

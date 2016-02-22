@@ -4,7 +4,8 @@ import json
 
 # from flask_sqlalchemy import SQLAlchemy
 # db = SQLAlchemy()
-from model import User, Category, Pose, connect_to_db, db
+from model import (User, Category, Pose)
+from model import connect_to_db, db
 from server import app
 
 
@@ -21,8 +22,10 @@ from server import app
 
 def load_users():
     """
-    load fake users from user.csv into database
+    load existing users from user.csv into database
     """
+
+    print "Users"
 
     #yoga_users is a csv file 
     users_file = open("yoga_users")
@@ -33,6 +36,8 @@ def load_users():
         a_user = User(email=line[0],
                       password=line[1])
         db.session.add(a_user)
+
+    # user = User(user_id=user_id, email=email)
 
     db.session.commit()
 
@@ -45,6 +50,8 @@ def load_categories(data_dict):
     # data_dict = json.load(data)
     # print data_dict
 
+    print "Categories"
+    
     for category in data_dict:
         new_category = Category(category_name=category)
         print new_category
@@ -52,6 +59,27 @@ def load_categories(data_dict):
 
     db.session.commit()
 
+
+def load_poses():
+    """
+    load existing users from user.csv into database
+    """
+
+    print "Poses"
+
+    #yoga_users is a csv file 
+    users_file = open("poses_yoga.csv")
+
+    for line in users_file:
+        line = line.rstrip()
+        line = line.split(",")
+        pose = Pose(pose=line[0],
+                      sanskrit=line[1])
+        db.session.add(pose)
+
+    # user = User(user_id=user_id, email=email)
+
+    db.session.commit()
 
 # def load_poses(data_dict):
 #     """Load poses from yoga_asanas.json file"""
