@@ -1,37 +1,3 @@
-
-    # def __init__(self,
-    #              id,
-                   category,
-    #              common_name,
-    #              sanskrit_name,
-    #              breathe,
-    #              image_url,
-    #     
-    #              random,
-    #              ):
-    #     self.id = id
-        self.category = category
-    #     self.common_name = common_name
-    #     self.sanskrit_name = sanskrit_name
-    #     self.breathe = breathe
-    #     self.image_url = image_url
-          self.time = time
-    #     self.pregnancy = pregnancy
-    #     
-
-
-    id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    category = db.Column(db.String(100), nullable=True)
-    common_name = db.Column(db.String(100), nullable=False )
-    sanskrit_name = db.Column(db.String(100),nullable=True )
-    breathe = db.Column(db.String(500), nullable=True )
-    image_url = db.Column(db.String(500), nullable=True)
-    time = db.Column(db.Integer, nullable=True)
-    pregnancy = db.Column(db.Integer, nullable=True )
-
-    True = 1 False = 0
-
-
 1|Integration|Child's Pose|Balasana|Exhale|http://www.pocketyoga.com/images/poses/child_traditional.png|2|1
 2|Integration|Downward Facing Dog|Adho_Mukha_Svanasana|Exhale|http://www.pocketyoga.com/images/poses/downward_dog.png|1|1
 3|Integration|Ragdoll|Uttanasana|Exhale|http://www.pocketyoga.com/images/poses/forward_bend.png|green|0
@@ -72,10 +38,3 @@
 38|Surrender Series|Supine Twist|Jathara_Parivartanasana|2.5|http://www.pocketyoga.com/images/poses/supine_spinal_twist_R.png|green|1
 39|Surrender Series|Corpse_Pose|Savasana|2.5|http://www.pocketyoga.com/images/poses/corpse.png|green|0
 40|Surrender Series|Namaste|The_light_in_me_honors_the_light_in_you|2.5|http://www.pocketyoga.com/images/poses/easy.png|green|0
-
-
-Hands_to_Feet_Pose_(Gorilla_Variation)  "Hands_to_Feet_Pose_(Gorilla_Variation)": ["Padhastasana, Exhale, 2to3Breaths"],
-
-
-
-"Tree_Pose": ["Vrksasana, Inhale, 2to3Breaths"]},

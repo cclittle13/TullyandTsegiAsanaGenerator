@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+        h1 {
+            color: blue;
+            font-family: sans-serif;
+        }
+
+    </style>
+<head>
+  <title>Hi There!</title>
+</head>
+<body>
+
+<h1>Hi There!</h1>
+
+<form action="/posegame">
+  What's your name? <input type="text" name="person">
+  <input type="submit">
+</form>
+
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+
+{% extends 'base.html' %}
+{% block title %}The Game{% endblock %}
+{% block content %}
+    <form action="/madlib" method="POST">
+        Please enter some words:<br>
+        <label>
+            <input type="text" name="name" placeholder="Name:">
+        </label><br>
+
+        <label>
+            <select name="color">
+                <option value="blue">blue</option>
+                <option value="pink">pink</option>
+                <option value="orange">orange</option>
+                <option value="black">black</option>
+            </select>
+        </label><br>
+
+        <label>
+            <input type="text" name="noun" placeholder="Noun:">
+        </label><br>
+
+        <label>
+            <input type="text" name="adjective" placeholder="Adjective:">  
+        </label><br>
+
+        <label>
+            <input type="radio" name="quantity" value="100">100
+        </label>
+
+        <label>
+            <input type="radio" name="quantity" value="200">200
+        </label>
+
+        <label>
+            <input type="radio" name="quantity" value="300">300
+        </label>
+
+        <label>
+            <select name="theme">
+                <option value="1">1</option>
+                <option value="2">2</option>
+            </select>
+        </label><br>
+
+            <input type="submit">
+    </form>
+{% endblock %}

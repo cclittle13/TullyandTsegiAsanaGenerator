@@ -1,10 +1,10 @@
-"""Utility file to seed ratings database from Yoga JSON file data in seed_data/"""
+# """Utility file to seed ratings database from Yoga JSON file data in seed_data/"""
 
 import json 
 
 # from flask_sqlalchemy import SQLAlchemy
 # db = SQLAlchemy()
-from model import (User, Category, Pose)
+from model import (User, Category, Pose, Image)
 from model import connect_to_db, db
 from server import app
 
@@ -68,16 +68,35 @@ def load_poses():
     print "Poses"
 
     #yoga_users is a csv file 
-    users_file = open("poses_yoga.csv")
+    users_file = open("poses.csv")
 
     for line in users_file:
         line = line.rstrip()
-        line = line.split(",")
-        pose = Pose(pose=line[0],
-                      sanskrit=line[1])
+        line = line.split("|")
+        pose = Pose(category= line[1], common_name=line[2],
+                      sanskrit_name=line[3], breathe=line[4],
+                      image_url=line[5], time=line[6], pregnancy=line[7])
         db.session.add(pose)
 
     # user = User(user_id=user_id, email=email)
+
+    db.session.commit()
+
+
+def load_images(images):
+    """Loads images from asana_images.json file"""
+
+    # import pdb; pdb.set_trace()
+    # data = open("yoga_asanas.json")
+    # data_dict = json.load(data)
+    # print data_dict
+
+    print "Images"
+    
+    for image in images:
+        new_image = Image(image_common_name=image)
+        print new_image
+        db.session.add(new_image)
 
     db.session.commit()
 
@@ -110,12 +129,16 @@ if __name__ == "__main__":
     users_file = open("./seed_data/users.csv.odt")
     data = open("yoga_asanas.json")
     print data
+    images = open("asana_test.json")
     data_dict = json.load(data)
+    images = json.load(images)
     connect_to_db(app)
     db.create_all()
     load_categories(data_dict)
     # load_poses(data_dict)
+    load_poses()
     load_users()
+    load_images(images)
     print "Connected to DB."
 
 

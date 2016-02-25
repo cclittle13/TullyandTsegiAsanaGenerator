@@ -22,13 +22,21 @@ class User(db.Model):
     user_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     email = db.Column(db.String(64), nullable=True)
     password = db.Column(db.String(64), nullable=True)
-    # age = db.Column(db.Integer, nullable=True)
-    # zipcode = db.Column(db.String(15), nullable=True)
+    # pose_id = db.Column(db.Integer, db.ForeignKey('poses.pose_id'))   
+
+    # # Define relationship to user
+    # image = db.relationship("Image",
+    #                        backref=db.backref("user"))
+
+    # # Define relationship to pose
+    # pose = db.relationship("Pose",
+    #                         backref=db.backref("user"))
 
     def __repr__(self):
         """Provide helpful representation when printed."""
 
         return "<User user_id=%s email=%s>" % (self.user_id, self.email)
+   
 
 
 class Pose(db.Model):
@@ -37,18 +45,71 @@ class Pose(db.Model):
     __tablename__ = "poses"
 
     pose_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    pose_name = db.Column(db.String(100), nullable=False )
-    # pose_name = db.Column(db.String(100),nullable=False )
-    pose_list = db.Column(db.String(500), nullable=True )
-    category_id = db.Column(db.Integer, nullable=True)
-    pose_list_time = db.Column(db.Integer, nullable=True)
-    image_file_name = db.Column(db.String(100), nullable=True )
+    category = db.Column(db.String(100), nullable=True)
+    common_name = db.Column(db.String(100), nullable=False )
+    sanskrit_name = db.Column(db.String(100),nullable=True )
+    breathe = db.Column(db.String(500), nullable=True )
+    image_url = db.Column(db.String(500), nullable=True)
+    time = db.Column(db.Integer, nullable=True)
+    pregnancy = db.Column(db.Integer, nullable=True )
+    # user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
+    # image_id = db.Column(db.Integer, db.ForeignKey('images.image_id'))
+
+    # image = db.relationship("Image")
+
+    # # Define relationship to user
+    # user = db.relationship("User")
 
     def __repr__(self):
         """Provide helpful representation when printed."""
 
-        return "<Pose pose_id=%s pose_name=%s>" % (self.pose_id, self.pose_name)
+        return "<Pose pose_id=%s category=%s common_name=%s sanskrit_name=%s breathe=%s image_url pregnancy=%s>" % (self.pose_id, 
+                                                    self.category, self.common_name, self.sanskrit_name, 
+                                                    self.breathe, self.image_url, self.time, self.pregnancy)
 
+
+class Image(db.Model):
+    """Images of asanas for sequence website."""
+
+    __tablename__ = "images"
+
+    image_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    image_common_name = db.Column(db.String(100), nullable=False )
+    # image_url = db.Column(db.String, db.ForeignKey('movies.movie_id'))
+    # user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
+
+
+    # # # Define relationship to user
+    # user = db.relationship("User")
+
+    # Define relationship to pose
+    # poses = db.relationship("Pose")
+   
+
+    
+    def __repr__(self):
+        """Provide helpful representation when printed."""
+
+        return "<User image_id=%s image_common_name=%s>" % (self.image_id, self.image_common_name)
+
+
+
+    # def __init__(self,
+    #              id,
+    #              common_name,
+    #              sanskrit_name,
+    #              breathe,
+    #              image_url,
+    #              category,
+    #              random,
+    #              ):
+    #     self.id = id
+    #     self.common_name = common_name
+    #     self.sanskrit_name = sanskrit_name
+    #     self.breathe = breathe
+    #     self.image_url = image_url
+    #     self.category = category
+    #     self.random = random
 
 # CREATE TABLE poses (
 #         pose_id SERIAL PRIMARY KEY, 
@@ -66,73 +127,12 @@ class Category(db.Model):
 
     category_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     category_name = db.Column(db.String(100), nullable=False )
-    
 
-
-# CREATE TABLE categories (
-#         category_id SERIAL PRIMARY KEY, 
-#         category_name VARCHAR(100) NOT NULL,
-#         pose_id INTEGER REFERENCES Pose, 
-#         );
-
-    def __repr__(self):
-        """Provide helpful representation when printed."""
-
-        return "<Category category_id=%s category_name=%s>" % (self.category_id, self.category_name)
-
-
-# class Category(db.Model):
-#     """Categories of segments of poses in the sequence."""
-
-#     __tablename__ = "categories"
-
-#     category_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-#     category_name = db.Column(db.String(100), nullable=False )
-    
-
-
-# # CREATE TABLE categories (
-# #         category_id SERIAL PRIMARY KEY, 
-# #         category_name VARCHAR(100) NOT NULL,
-# #         pose_id INTEGER REFERENCES Pose, 
-# #         );
-
-#     def __repr__(self):
-#         """Provide helpful representation when printed."""
-
-#         return "<Category category_id=%s category_name=%s>" % (self.category_id, self.category_name)
-
-
-
-    class Poses_Categories(db.Model):
-        """All poses that are in each category."""
-
-    __tablename__ = "Poses_Categories"
-
-    order_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    pose_id = db.Column(db.Integer,
-                        db.ForeignKey('poses.pose_id'),
-                        nullable=False)
-    category_id = db.Column(db.Integer,
-                        db.ForeignKey('categories.category_id'),
-                        nullable=False)
-
-    poses = db.relationship("Pose")
-    categories = db.relationship("Category")
-
-        # def __repr__(self):
-        #     """Provide helpful representation when printed."""
-
-        #     return "<Poses_Categories order_id=%s pose_id=%s category_id=%s>" % (self.order_id,
-        #                                                  self.pose_id, self.category_id)
-
-##############################################################################
-# Helper functions
 
 def connect_to_db(app):
     """Connect the database to our Flask app."""
 
-    # Configure to use our PostgreSQL database
+    #  Configure to use our PostgreSQL database
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///chelsea'
     db.app = app
     db.init_app(app)
@@ -142,7 +142,8 @@ if __name__ == "__main__":
     # As a convenience, if we run this module interactively, it will leave
     # you in a state of being able to work with the database directly.
 
-    from server import app
+    from tullyandtsegiserver import app
     connect_to_db(app)
+
     db.create_all()
     print "Connected to DB."

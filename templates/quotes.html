@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<head>
+<!--   <link rel="stylesheet" href="./static/madlibs.css">  -->
+  <title>Pose Game</title>
+</head>
+<body>
+    <br>
+    <form action="/game">
+        <label>Would you like to pick poses?</label>
+        <input type="radio" name="pickposes" value="yes">Yes
+        <input type="radio" name="pickposes" value="no">No
+        <br>
+        <input type="submit">
+    </form>
+</body>
+
+
+{% endblock %}
