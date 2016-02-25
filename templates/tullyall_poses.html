@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <h2>Asanas</h2>
+
+    <div id="pose_list" class="row">
+      {% for pose in pose_list %}
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 pose-summary">
+
+              <div class="well">
+                  <h3><a href="/listposes/{{ pose.id }}">{{ pose.common_name }}</a></h3>
+                  <a href="/listposes/{{ pose.id }}">
+                      <img src="{{ pose.image_url }}" class="img-circle">
+                  </a>
+
+
+          </div>
+      {% endfor %}
+    </div>
+
+{% endblock %}

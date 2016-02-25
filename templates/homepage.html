@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Fake Pinterest</title>
+    <title>Asana List with details</title>
 
   
     <script src="/static/js/favorites.js"></script>
@@ -36,18 +36,20 @@
 <body>
     <h1>ASANAS</h1>
 <!--     <img id="test" src="static/images/awkward.png" alt="Insert im"> -->
-<form action="\sequence">
+
+<div id="gallery">
+<form action="/sequence">
+
     Check the poses you like:
     <div id="gallery">
         {% for image in images %}
-            <div>
-                <label><input type="checkbox" name="poses" value="{{ image.id }}">{{ image.name }}</label>
-                <button><a href="">More details</a></button>
-                <img src="{{ image.url }}" alt="Insert im">
+                <div><label><input type="checkbox" name="poses" value="{{ image.name }}">{{ image.name }}</label>
+                <button><a href="/posedetails/{{ image.id }}">More details</a></button>
+                <img src="{{ image.url }}" alt="Insert im"> </div>
                <!--  <button id="{{ image.id }}" class="favorite-btn">&hearts; Favorite</button>
                 <button id="{{ image.id }}" class="favorite-btn">&#9728; Pose Detail</button> -->
              <!--    <input type="submit" class="btn btn-primary"></button> -->
-            </div>
+            
 
 
             <!-- <div>
@@ -55,16 +57,18 @@
                 <button id="{{ image.id }}" class="favorite-btn">&stars; Favorite</button>
             </div> -->
 
-<!-- 
-            <div class="form-group">
+
+          <!--   <div class="form-group">
             <input type="btn" class="btn btn-info"></button>
-            </div> -->
+          -->
 
         {% endfor %}
-    </div>
+    
      <input type="submit">
-
+     
+         </div>
     </form>   
+
 </body>
 </html>
 

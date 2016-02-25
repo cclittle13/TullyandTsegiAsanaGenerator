@@ -117,12 +117,12 @@ def add_to_sequence():
     return jsonify(status="success", id=photo_id)
 
 
-@app.route('/asanas')
-def asana_list():
-    """Show list of asanas."""
+# @app.route('/asanas')
+# def asana_list():
+#     """Show list of asanas."""
 
-    Asana = Asana.query.order_by('pose').all()
-    return render_template("asana_list.html", poses=poses)
+#     Asana = Asana.query.order_by('pose').all()
+#     return render_template("asana_list.html", poses=poses)
 
 
 @app.route('/register', methods=['GET'])
@@ -206,12 +206,12 @@ def user_list():
 #     user = User.query.get(user_id)
 #     return render_template("user.html", user=user)
 
-@app.route("/asanas")
-def asana_list():
-    """Show list of asanas."""
+# @app.route("/asanas")
+# def asana_list():
+#     """Show list of asanas."""
 
-    Asana = Asana.query.order_by('pose').all()
-    return render_template("asana_list.html", poses=poses)
+#     Asana = Asana.query.order_by('pose').all()
+#     return render_template("asana_list.html", poses=poses)
 
 # @app.route("/movies")
 # def movie_list():
