@@ -63,9 +63,7 @@ class Pose(db.Model):
     def __repr__(self):
         """Provide helpful representation when printed."""
 
-        return "<Pose pose_id=%s category=%s common_name=%s sanskrit_name=%s breathe=%s image_url pregnancy=%s>" % (self.pose_id, 
-                                                    self.category, self.common_name, self.sanskrit_name, 
-                                                    self.breathe, self.image_url, self.time, self.pregnancy)
+        return "<Pose category=%s common_name=%s>" % (self.category, self.common_name)
 
 
 class Image(db.Model):

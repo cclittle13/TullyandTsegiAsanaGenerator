@@ -1,15 +1,17 @@
 """Tully and Tsegi's Asana Generator"""
+
+import random
 from random import sample
 # from random import choice 
 # from javascript3demo
 from flask import (Flask, render_template, redirect,
                    request, flash, session, jsonify)
 import jinja2
-# from jinja2 import StrictUndefined
+from jinja2 import StrictUndefined
 # from ratings
 # from flask import Flask, render_template, request, flash, redirect, session
-# from flask_debugtoolbar import DebugToolbarExtension
-# from model import connect_to_db, db, User, Movie, Rating
+from flask_debugtoolbar import DebugToolbarExtension
+from model import db, connect_to_db, Pose, User, Category, Image
 
 
 app = Flask(__name__)
@@ -62,7 +64,7 @@ IMAGES = [
     { "id": 36, "name": "Seated Forward Fold", "url": "http://www.pocketyoga.com/images/poses/seated_forward_bend.png"},
     { "id": 37, "name": "Happy Baby Pose", "url": "http://www.pocketyoga.com/images/poses/blissful_baby.png"},
     { "id": 38, "name": "Supine Twist", "url": "http://www.pocketyoga.com/images/poses/supine_spinal_twist_R.png"},
-    { "id": 39, "name": "Savasana","name": "Supine Twist","url": "http://www.pocketyoga.com/images/poses/corpse.png"},
+    { "id": 39, "name": "Savasana","url": "http://www.pocketyoga.com/images/poses/corpse.png"},
     { "id": 40, "name": "Namaste","url": "http://www.pocketyoga.com/images/poses/easy.png"},
 ]
 
@@ -155,18 +157,30 @@ def asana_list():
 
     return render_template("homepage.html", images=IMAGES)
 
+@app.route('/posedetails/<int:pose_id>')
+def pose_details(pose_id):
+    """Shows pose details for each asana"""
+
+    pose_info = Pose.query.get(pose_id)
+
+    print "checking pose_info...", pose_info.common_name, pose_info.category
+
+    return render_template("detail_pose.html", pose=pose_info)
+
+#HTML 
+#pose becomes jinja variable
+
+
 
 @app.route('/about', methods=['GET'])
 def about_page():
     """Site introduction."""
 
+    # rand = random.randrange(0, session.query(Table).count()) 
+    # row = session.query(Table)[rand]
+
     return render_template("about.html")
 
-# @app.route("/about")
-# def website_info():
-#     """Return website info page."""
-    
-#     return render_template("about.html")
 
 @app.route('/add-to-sequence', methods=['POST'])
 def add_to_sequence():
@@ -250,106 +264,103 @@ def add_to_favorites():
 #     """Show login form."""
 
 #     return render_template("login_form.html")
-
-
-
-@app.route("/login", methods=["POST", "GET"])
-def login_form():
-    """
-    GET - displays a form that asks for email and password
-    POST - collects that data and authenticates --> redirect to user profile
-    """
-
-    if request.method == "POST":
-        email = request.form["username_input"]
-        password = request.form["password_input"]
-        user_object = User.query.filter(User.email == email).first()
-
-        if user_object:
-            if user_object.password == password:
-                session["login"] = email
-                flash("You logged in successfully")
-                return redirect("/profile")
-            else:
-                flash("Incorrect password. Try again.")
-                return redirect("/login")
-        else:
-            flash("""We do not have this email on file.
-                Click Register if you would like to create an account.""")
-            return redirect("/register")
-
-    return render_template("login_form.html")
-
-
-@app.route("/logout")
-def logout():
-    """
-    Logout - link removes User from session and redirects to homepage.
-    Flashes message confirming that User has logged out.
-    """
-
-    session.pop("login")
-    flash("You've successfully logged out. Goodbye.")
-    return redirect("/")
-
-
-
+#___________________________________________________________________________________
 @app.route('/register', methods=['GET'])
 def register_form():
     """Show form for user signup."""
 
     return render_template("register_form.html")
 
+@app.route('/register', methods=['POST'])
+def register_process():
+    """Process registration."""
 
-# @app.route("/register", methods=["GET", "POST"])
-# def registration_form():
-#     """
-#     GET - Displays a form for new users to enter login info & connect to Mint
-#     POST - adds registration data to DB --> redirect to transaction analysis
-#     (or choose to browse challenges --> redirect to challenge browser tool)
-#     """
+    # Get form variables
+    email = request.form["email"]
+    password = request.form["password"]
+    
+    new_user = User(email=email, password=password)
 
-#     if request.method == "POST":
+    db.session.add(new_user)
+    db.session.commit()
 
-#         # firstname = request.form["firstname"]
-#         # lastname = request.form["lastname"]
-#         email = request.form["email"]
-#         password = request.form["password"]
-#         # age = request.form["age"]
-#         # zipcode = request.form["zipcode"]
+    flash("User %s added." % email)
+    return redirect("/users/%s" % new_user.user_id)
 
-#         if User.query.filter(User.email == email).first():
-#             flash("""Hmm...we already have your email account on file.
-#                   Please log in.""")
-#             return redirect("/login")
-#         else:
-#             new_user = User(email=email, password=password)
-#             db.session.add(new_user)
-#             db.session.commit()
 
-#             session["login"] = email
-#             # keyring.set_password("system", mint_username, mint_password)
+@app.route('/login', methods=['GET'])
+def login_form():
+    """Show form for user signup."""
 
-#             flash("Thanks for creating an account!")
-#             return redirect("/")
+    return render_template("login_form.html")
 
-#     return render_template("register_form.html")
+
+
+@app.route('/login', methods=['POST'])
+def login_process():
+    """Process login."""
+
+    # Get form variables
+    email = request.form["email"]
+    password = request.form["password"]
+
+    user = User.query.filter_by(email=email).first()
+
+    if not user:
+        flash("No such user")
+        return redirect("/login")
+
+    if user.password != password:
+        flash("Incorrect password")
+        return redirect("/login")
+
+    session["user_id"] = user.user_id
+
+    flash("Logged in")
+    return redirect("/users/%s" % user.user_id)
+
+    # return render_template("login_form.html")
+
+
+
+@app.route('/logout')
+def logout():
+    """Log out."""
+
+    del session["user_id"]
+    flash("Logged Out.")
+    return redirect("/")
+
+@app.route("/users")
+def user_list():
+    """Show list of users."""
+
+    users = User.query.all()
+    return render_template("user_list.html", users=users)
+
+
+@app.route("/users/<int:user_id>")
+def user_detail(user_id):
+    """Show info about user."""
+
+    user = User.query.get(user_id)
+    return render_template("user.html", user=user)
 
 
 
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+
+
+    connect_to_db(app)
 
     # We have to set debug=True here, since it has to be True at the point
     # that we invoke the DebugToolbarExtension
 
     # Do not debug for demo
 
-    connect_to_db(app)
-
     # Use the DebugToolbar
     DebugToolbarExtension(app)
 
-    app.run()
+    app.run(debug=True)

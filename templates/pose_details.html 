@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+    {{ pose.common_name }}
+
+    <br>
+    {{ pose.sanskrit_name }}
+
+{% endblock %}

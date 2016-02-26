@@ -98,6 +98,8 @@ def asana_list():
     return render_template("homepage.html", images=IMAGES)
 
 
+    
+
 @app.route('/about', methods=['GET'])
 def about_page():
     """Site introduction."""
@@ -153,14 +155,8 @@ def add_to_sequence():
 @app.route("/sequence")
 def returns_sequence():
     """Return homepage."""
-
-    poses_list = request.args.getlist("poses")
-    print poses_list
     
-    return render_template("sequence.html",poses_list=poses_list)
-
-
-
+    return render_template("sequence.html", images=IMAGES)
 
 @app.route("/poses")
 def shows_full_pose_list():

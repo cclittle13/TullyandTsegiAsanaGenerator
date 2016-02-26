@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hackbright Coffee Shop</title>
+
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <link href="static/coffee.css" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="container">
+    <div class="starter-template">
+        <h1>Coffee Shop</h1>
+        <br>
+
+        <img id="coffee_image" src="FIXME" alt="make this image work" height="300" width="200">
+
+        <h3 id="message">Click The Image To Order Coffee</h3>
+
+        <table class="table">
+            <tr>
+                <td class="col-md-2">
+                    <button class="btn btn-default" id="espresso">Espresso</button>
+                </td>
+                <td class="col-md-2">
+                    <button class="btn btn-default" id="latte">Latte</button>
+                </td>
+                <td class="col-md-2">
+                    <button class="btn btn-default" id="hot-chocolate">Hot Chocolate</button>
+                </td>
+            </tr>
+            <tr>
+                <td>$3.25</td>
+                <td>$4.15</td>
+                <td>$2.50</td>
+            </tr>
+        </table>
+
+        <h4>Total: <span id="revenue"><!-- Revenue Message will show up here --></span></h4>
+    </div>
+</div>
+
+<script>
+
+    var myImage = document.getElementById("coffee_image");
+    var myRevenueMessage = document.getElementById("revenue");
+
+    var drinksOrdered = [];
+
+    myImage.src = "static/coffee_beans.jpg";
+    myImage.addEventListener('click', function () { return makeCoffee("brew"); });
+
+    // Append the drink_type to drinks_ordered and use console.log to view the output
+
+    function makeCoffee(drinkType) {
+        drinksOrdered.push(drinkType);
+        console.log(drinksOrdered);
+
+        var myRevenue = revenue();
+        myRevenueMessage.innerHTML = "Today's revenues: " + myRevenue;
+
+        myImage.setAttribute('src', "static/coffee_machine.jpg");
+        // setTimeout(function () { myImage.setAttribute('src', "static/coffee_mug.jpg"); }, 500);
+        function fadeInn() {myImage.setAttribute("src", "static/coffee_machine.jpg").fadeIn("slow");}
+
+
+
+            // setTimeout(function () { myImage.setAttribute('src', "static/coffee_beans.jpg").fadeIn("slow"); }, 1500); ); }, 500)
+    }
+
+
+    // Create variables for Espresso, Latte, and Hot Chocolate;
+    // and add an event listener to each that calls make_coffee
+    var espresso = document.getElementById("espresso");
+    var latte = document.getElementById("latte");
+    var hotChocolate = document.getElementById("hot-chocolate");
+
+    espresso.addEventListener('click', function () { return makeCoffee("espresso"); });
+    latte.addEventListener('click', function () { return makeCoffee("latte"); });
+    hotChocolate.addEventListener('click', function () { return makeCoffee("hot chocolate"); });
+
+    // Use this dictionary to calculate profits for the day and log them to the console.
+
+    var prices = {"brew": 2.05, "espresso": 3.25, "latte": 4.15, "hot chocolate": 2.50};
+
+    function revenue() {
+        var total = 0;
+        for (var i = 0; i < drinksOrdered.length; i++) {
+            total += prices[drinksOrdered[i]];
+        }
+        console.log("Total revenue = " + total);
+        return total;
+    }
+
+</script>
+
+</body>
+</html>
+
+
+{% endblock %}
