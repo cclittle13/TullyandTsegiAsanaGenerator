@@ -2,7 +2,8 @@
 
 import random
 from random import sample
-# from random import choice 
+from random import choice 
+from random import shuffle 
 # from javascript3demo
 from flask import (Flask, render_template, redirect,
                    request, flash, session, jsonify)
@@ -233,6 +234,90 @@ def returns_sequence():
 
 
 
+@app.route("/random")
+def random_list():
+    """Return random list."""
+
+    all_poses = ["Child's_Pose", 
+    "Downward_Facing_Dog",
+    "Ragdoll",
+    "Samasthiti",
+    "Mountain_Pose",
+    "Standing_Forward_Fold",
+    "Halfway_Lift",
+    "Chaturanga_Dandasana",
+    "Upward_Facing_Dog",
+    "Table_Pose",
+    "Chair_Pose",
+    "Warrior_2",
+    "Extended_Side_Angle",
+    "Reverse_Warrior",
+    "Reclined_Bound_Angle_Sit-Ups",
+    "Bicycle_Sit-Ups",
+    "Boat_Pose", 
+    "Cresent_Lunge",
+    "Revolved_Cresent_Lunge",
+    "Runner's_Lunge",
+    "Side_Plank",
+    "Prayer_Twist",
+    "Frog_Pose",
+    "Crow_Pose",
+    "Eagle_Pose",
+    "Dancer's_Pose",
+    "Warrior_1",
+    "Triangle_Pose",
+    "Prasarita_Pose", 
+    "Half_Pigeon",
+    "Cobra_Pose",
+    "Floor_Bow",
+    "Camel_Pose",
+    "Bridge_Pose",
+    "Reclined_Bound_Angle_Pose", 
+    "Seated_Forward_Fold",
+    "Happy_Baby_Pose",
+    "Supine_Twist",
+    "Savasana",
+    "Namaste"]
+
+
+    random_poses = []
+
+    for i in range(40):
+        random_poses.append(random.choice(all_poses))
+
+        #sqlalchemy query that returns list of my pose objects, iterate over list and then print
+
+
+    print random_poses
+    return render_template("random_poses.html", random_poses= random_poses)
+
+
+# random_list(list_length, pose_range)
+
+    # all_poses = ["Child's_Pose", 
+    # "Downward_Facing_Dog",
+    # "Ragdoll",
+    # "Samasthiti",
+    # "Mountain_Pose"]
+    # Standing_Forward_Fold,
+    # Halfway_Lift,
+    # Chaturanga_Dandasana,
+    # Upward_Facing_Dog,
+    # Table_Pose,
+    # Chair_Pose,
+    # Warrior_2,
+    # Extended_Side_Angle,]
+
+    # random.shuffle(all_poses, random.random)
+
+    # return all_poses
+
+    # random.shuffle(x[, random])
+
+    # def myshuffle(ls):
+    #     random.shuffle(ls)
+    #     return ls
+
 
 @app.route("/poses")
 def shows_full_pose_list():
@@ -318,9 +403,6 @@ def login_process():
 
     flash("Logged in")
     return redirect("/users/%s" % user.user_id)
-
-    # return render_template("login_form.html")
-
 
 
 @app.route('/logout')
