@@ -43,8 +43,8 @@ var myImage = $('#asana_image').attr("src", "cat_balance.jpg");
 <!-- for pose in poses_list:
     display pose  -->
 <!-- add styling for display -->
-    {% for pose in poses_list %}
-        <li>{{ pose }}</li>
+    {% for pose in poses %}
+        <li>{{ pose.common_name }}</li>
     {% endfor %}
 <!-- 
 <a href="http://www.pocketyoga.com/images/thumbnailsbig/box_neutral-tnbig.png"></a>

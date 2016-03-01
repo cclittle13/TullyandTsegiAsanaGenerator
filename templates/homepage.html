@@ -46,27 +46,12 @@
 
     Check the poses you like:
     <div id="gallery">
-        {% for image in images %}
-                <div><label><input type="checkbox" name="poses" value="{{ image.name }}">{{ image.name }}</label>
-                <button><a href="/posedetails/{{ image.id }}">Details</a></button>
-                <button><a href="/pregnancy/{{ image.id }}">Pregnancy</a></button>
-                <img src="{{ image.url }}" alt="Insert im"> </div>
-
-               <!--  <button id="{{ image.id }}" class="favorite-btn">&hearts; Favorite</button>
-                <button id="{{ image.id }}" class="favorite-btn">&#9728; Pose Detail</button> -->
-             <!--    <input type="submit" class="btn btn-primary"></button> -->
-            
-
-
-            <!-- <div>
-                <img src="{{ image.url }}" alt="Insert im">
-                <button id="{{ image.id }}" class="favorite-btn">&stars; Favorite</button>
-            </div> -->
-
-
-          <!--   <div class="form-group">
-            <input type="btn" class="btn btn-info"></button>
-          -->
+        {% for pose in poses %}
+                <div><label><input type="checkbox" name="poses" value="{{ pose.pose_id }}">{{ pose.common_name }}</label>
+                <button><a href="/posedetails/{{ pose.pose_id }}">Details</a></button>
+                <button><a href="/pregnancy/{{ pose.pose_id }}">Pregnancy</a></button>
+                <button><a href="/posedetails/{{ pose.pose_id }}">Sanskrit</a></button>
+                <img src="{{ pose.image_url }}" alt="Insert im"> </div>
 
         {% endfor %}
     

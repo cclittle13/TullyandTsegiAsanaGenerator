@@ -4,12 +4,17 @@
 <div class="well spaced" style="width:50%;">
   <h2>Sanskrit to English</h2>
   <ul>
-  {% for pose in poses %}
-    <li>
-      <a href="/sanskrittranslations/{{ pose.pose_id }}">{{ pose.common_name, pose.sanskrit_name }}</a>
-    </li>
+  {% for pose in pose_info %}
+    <ul>
+      <a href="/posedetails/{{ pose.pose_id }}">{{ pose.sanskrit_name }}
+        {% if pose.sanskrit_name %} , {% endif %}
+       {{ pose.common_name }}</a>
+    </ul>
   {% endfor %}
   </ul>
-</div>
+
+
 {% endblock %}
+
+
 

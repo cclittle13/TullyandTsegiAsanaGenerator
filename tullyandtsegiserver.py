@@ -22,9 +22,9 @@ app.secret_key = 'tully-is-the-cutest'
 
 app.jinja_env.undefined = jinja2.StrictUndefined
 
-AWESOMENESS = [
-    'awesome', 'terrific', 'fantastic', 'neato', 'fantabulous', 'wowza', 'oh-so-not-meh',
-    'brilliant', 'ducky', 'coolio', 'incredible', 'wonderful', 'smashing', 'lovely']
+# AWESOMENESS = [
+#     'awesome', 'terrific', 'fantastic', 'neato', 'fantabulous', 'wowza', 'oh-so-not-meh',
+#     'brilliant', 'ducky', 'coolio', 'incredible', 'wonderful', 'smashing', 'lovely']
 
 IMAGES = [
     { "id": 1, "name": "Child's Pose", "url": "http://www.pocketyoga.com/images/poses/child_traditional.png"},
@@ -74,10 +74,7 @@ IMAGES = [
 def index():
     """Welcome page."""
     
-    # movies = Movie.query.order_by('title').all()
     return render_template("welcome.html", images=IMAGES)
-# from madlibs add hello to user 
-
 
 #______________________________________________________________________
 
@@ -146,6 +143,7 @@ def list_poses():
     """Return page showing all the poses for the sequence generator """
 
     pose_list = poses.get_all()
+
     return render_template("tullyall_poses.html",
                            pose_list=pose_list)
 
@@ -154,14 +152,19 @@ def list_poses():
 def asana_list():
     """Homepage of all pose choices and pics"""
 
-    return render_template("homepage.html", images=IMAGES)
+    poses = Pose.query.all()
+    return render_template("homepage.html", poses=poses)
+
 
 @app.route("/sanskrittranslations")
 def sanskrit_list():
     """Show list of all poses with sanskrit."""
 
-    poses = Pose.query.order_by('pose_id').all()
-    return render_template("sanskrit_list.html", poses=poses)
+    # pose_info = Pose.query.get(pose_id)
+    pose_info = Pose.query.all()
+
+    return render_template("sanskrit_list.html", pose_info=pose_info)
+
 
 @app.route('/sanskrit/<int:pose_id>')
 def sanskrit(pose_id):
@@ -171,7 +174,7 @@ def sanskrit(pose_id):
 
     print "checking pose_info...", pose_info.common_name, pose_info.category
 
-    return render_template("sanskrit.html", pose=pose_info)
+    return render_template("sanskrit.html", pose_info=pose_info)
 
 
 @app.route('/posedetails/<int:pose_id>')
@@ -183,17 +186,6 @@ def pose_details(pose_id):
     print "checking pose_info...", pose_info.common_name, pose_info.category
 
     return render_template("detail_pose.html", pose=pose_info)
-
-
-# @app.route('/pregnancy')
-# def pregnancy_safe():
-#     """Shows pregnancy details for each asana"""
-
-#     # pregnancy_info = Pose.query.filter_by(pregnancy)
-
-#     # print "checking pose_info...", pregnancy_info.pregnancy
-
-#     return render_template("pregnancy.html")
 
 
 @app.route('/pregnancy/<int:pose_id>')
@@ -210,10 +202,6 @@ def pregnancy_safe(pose_id):
 
 
 
-
-#HTML 
-#pose becomes jinja variable
-
 @app.route('/about', methods=['GET'])
 def about_page():
     """Site introduction."""
@@ -224,25 +212,15 @@ def about_page():
     return render_template("about.html")
 
 
-@app.route('/add-to-sequence', methods=['POST'])
-def add_to_sequence():
-    """Adds favored poses to db table and highlighted heart red"""
-
-    photo_id = request.form.get("id")
-
-    # put this in a "favorites" table?
-
-    return jsonify(status="success", id=photo_id)
-
-
 @app.route("/sequence")
 def returns_sequence():
     """Return homepage."""
 
-    poses_list = request.args.getlist("poses")
-    print poses_list
+    pose_id_list = request.args.getlist("poses")
+    pose_id_list = map(int, pose_id_list)
+    poses = Pose.query.filter(Pose.pose_id.in_(pose_id_list))
     
-    return render_template("sequence.html",poses_list=poses_list)
+    return render_template("sequence.html",poses=poses)
 
 @app.route("/random")
 def random_list():
@@ -297,7 +275,6 @@ def random_list():
 
         #sqlalchemy query that returns list of my pose objects, iterate over list and then print
 
-
     print random_poses
     return render_template("random_poses.html", random_poses= random_poses)
 
@@ -336,15 +313,6 @@ def shows_full_pose_list():
     return render_template("pose.html", images=IMAGES)
 
 
-@app.route("/add-to-favorites", methods=["POST"])
-def add_to_favorites():
-
-    photo_id = request.form.get("id")
-
-    # put this in a "favorites" table?
-
-    return jsonify(status="success", id=photo_id)
-
 # @app.route("/add-to-favorites", methods=["POST"])
 # def add_to_favorites():
 
@@ -354,11 +322,6 @@ def add_to_favorites():
 
 #     return jsonify(status="success", id=photo_id)
 
-# @app.route('/login', methods=['GET'])
-# def login_form():
-#     """Show login form."""
-
-#     return render_template("login_form.html")
 #___________________________________________________________________________________
 @app.route('/register', methods=['GET'])
 def register_form():

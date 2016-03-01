@@ -12,11 +12,11 @@
     <div id="sanskrit_name" style="display: none"> 
     {{ pose.sanskrit_name }}
     </div> 
-    <button class="btn btn-default" id="show_sanskrit_button">Show Sanskrit</button>
+    <button class="btn btn-default" id="toggle_sanskrit_button">Sanskrit</button>
 
-    <script> $('#show_sanskrit_button').click(function(){
+    <script> $('#toggle_sanskrit_button').click(function(){
         console.log('button clicked!');
-        $('#sanskrit_name').show();
+        $('#sanskrit_name').toggle();
     });
     </script>
     <br>
@@ -34,4 +34,10 @@
 
     <img src="{{ pose.image_url }}">
 
+    <br>
+
+    <div class="site-wrapper-inner">
+    <div> <a href="/asanas" class="btn btn-lg btn-primary">Back to Generate My Sequence</a> </div>
+
 {% endblock %}
+
