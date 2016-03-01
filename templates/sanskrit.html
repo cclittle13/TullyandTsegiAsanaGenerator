@@ -12,13 +12,21 @@
     <div id="sanskrit_name" style="display: none"> 
     {{ pose.sanskrit_name }}
     </div> 
-    <button class="btn btn-default" id="show_sanskrit_button">Show Sanskrit</button>
-
+    <button class="btn btn-default" id="show_sanskrit_button">Toggle Sanskrit</button>
+<!-- 
     <script> $('#show_sanskrit_button').click(function(){
         console.log('button clicked!');
         $('#sanskrit_name').show();
     });
     </script>
+    <br>
+ -->
+    <script> $('#show_sanskrit_button').click(function(){
+        console.log('button clicked!');
+        $('#sanskrit_name').toggle();
+    });
+    </script>
+    <!-- <button>Toggle between hide() and show()</button> -->
     <br>
 
     {{ pose.breathe }}
@@ -35,3 +43,25 @@
     <img src="{{ pose.image_url }}">
 
 {% endblock %}
+
+<!-- 
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $("p").toggle();
+    });
+});
+</script>
+</head>
+<body>
+
+<p>This is a paragraph.</p>
+
+<button>Toggle between hide() and show()</button>
+
+</body>
+</html> -->

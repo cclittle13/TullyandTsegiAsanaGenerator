@@ -156,6 +156,12 @@ def asana_list():
 
     return render_template("homepage.html", images=IMAGES)
 
+@app.route("/sanskrittranslations")
+def sanskrit_list():
+    """Show list of all poses with sanskrit."""
+
+    poses = Pose.query.order_by('pose_id').all()
+    return render_template("sanskrit_list.html", poses=poses)
 
 @app.route('/sanskrit/<int:pose_id>')
 def sanskrit(pose_id):
