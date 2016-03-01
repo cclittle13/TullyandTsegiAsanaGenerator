@@ -2,9 +2,12 @@
 
 {% block body %}
 
-    {{ pose.common_name }}
+  <div id="common_name">  {{ pose.common_name }}
+  </div>
 
     <br>
-    {{ pose.sanskrit_name }}
+
+  <div id="sanskrit_name" style="visibility:hidden"> {{ pose.sanskrit_name }}
+  </div>
 
 {% endblock %}

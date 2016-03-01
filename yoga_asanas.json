@@ -1,7 +1,7 @@
 {
 "Integration":{
-    "Childs_Pose": ["Balasana", "Exhale", "2_min"],
-    "Downward_Facing_Dog": ["Adho_Mukha_Svanasana, Exhale, 1_min"],
+    "Childs_Pose": "Balasana", "Exhale", "2_min",
+    "Downward_Facing_Dog": "Adho_Mukha_Svanasana, Exhale, 1_min",
     "Ragdoll_Pose": ["Uttanasana, Exhale, 1_min"]},
 
 "Intention":{

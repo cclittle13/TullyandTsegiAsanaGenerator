@@ -7,31 +7,56 @@
 </head>
 <body>
     <br>
-    <form action="/posegame">
+    <form action="/game">
 
-        <label>Would you like to pick poses?</label>>
+      <!--   <label>Would you like to pick poses?</label>>
         <select name="color">
             <option value="blue">blue</option>
             <option value="pink">pink</option>
             <option value="orange">orange</option>
             <option value="black">black</option>
         </select>
-    </label><br>
+    </label><br> -->
 
     <br>
 
         <label>Would you like to pick poses?</label>
 
-        <!-- <input type="" name="pickposes" value="yes">Yes
-        <input type="radio" name="pickposes" value="no">No -->
+        <input type="radio" name="pickposes" value="yes">Yes
+        <input type="radio" name="pickposes" value="no">No
         <br>
         <input type="submit">
     </form>
 
 
     <form>
-        <
+        
 </body>
 
+
+
+
+<p id="demo">Let AJAX change this text.</p>
+
+<button type="button"
+onclick="loadDoc('ajax_info.txt', myFunction)">Change Content
+</button>
+
+<script>
+function loadDoc(url, cfunc) {
+  var xhttp;
+  xhttp=new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+      cfunc(xhttp);
+    }
+  };
+  xhttp.open("GET", url, true);
+  xhttp.send();
+}
+function myFunction(xhttp) {
+  document.getElementById("demo").innerHTML = xhttp.responseText;
+}
+</script>
 
 {% endblock %}

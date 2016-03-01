@@ -35,6 +35,7 @@ integrations = data.keys()
 for key in integrations:
     print "Do you want to add the %s Series? " %key
     answer = raw_input('>')
+    #
     if answer == "Yes":
         print data[key]['Time'], 'minutes'
         total_practice.append(key)

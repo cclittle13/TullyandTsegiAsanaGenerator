@@ -8,6 +8,7 @@ from random import shuffle
 from flask import (Flask, render_template, redirect,
                    request, flash, session, jsonify)
 import jinja2
+
 from jinja2 import StrictUndefined
 # from ratings
 # from flask import Flask, render_template, request, flash, redirect, session
@@ -77,12 +78,14 @@ def index():
     return render_template("welcome.html", images=IMAGES)
 # from madlibs add hello to user 
 
+
+#______________________________________________________________________
+
 @app.route("/hello")
 def say_hello():
     """Save hello to user."""
 
     return render_template("hello.html")
-#______________________________________________________________________
 
 @app.route("/posegame")
 def pose_game():
@@ -90,7 +93,7 @@ def pose_game():
 
     player = request.args.get("person")
 
-    compliments = sample(AWESOMENESS, 3)
+    # compliments = sample(AWESOMENESS, 3)
 
     return render_template("quotes.html")
                            # user=user,
@@ -113,12 +116,13 @@ def show_game_form():
 
 @app.route('/madlib', methods=["GET"])
 def show_madlib():
-    name = request.form.get("name")
-    color = request.form.get("color")
-    noun = request.form.get("noun")
-    adjective = request.form.get("adjective")
-    quantity = request.form.get("quantity")
-    theme = request.form.get("theme")
+    category = request.form.get("category")
+    name = request.form.get("common_name")
+    sanskrit = request.form.get("Sanskrit_name")
+    breathe = request.form.get("breathe")
+    time = request.form.get("time")
+    pregnancy = request.form.get("pregnancy")
+    image_url = request.form.get("image_url")
 
     return render_template("madlib.html",
                             name=name,
@@ -144,19 +148,25 @@ def list_poses():
     pose_list = poses.get_all()
     return render_template("tullyall_poses.html",
                            pose_list=pose_list)
-# @app.route("/poses")
-# def list_poses():
-#     """Return page showing all the poses"""
 
-#     melon_list = melons.get_all()
-#     return render_template("all_poses.html",
-#                            melon_list=melon_list)
 
 @app.route('/asanas')
 def asana_list():
     """Homepage of all pose choices and pics"""
 
     return render_template("homepage.html", images=IMAGES)
+
+
+@app.route('/sanskrit/<int:pose_id>')
+def sanskrit(pose_id):
+    """Sanskrit translations"""
+
+    pose_info = Pose.query.get(pose_id)
+
+    print "checking pose_info...", pose_info.common_name, pose_info.category
+
+    return render_template("sanskrit.html", pose=pose_info)
+
 
 @app.route('/posedetails/<int:pose_id>')
 def pose_details(pose_id):
@@ -168,10 +178,35 @@ def pose_details(pose_id):
 
     return render_template("detail_pose.html", pose=pose_info)
 
+
+# @app.route('/pregnancy')
+# def pregnancy_safe():
+#     """Shows pregnancy details for each asana"""
+
+#     # pregnancy_info = Pose.query.filter_by(pregnancy)
+
+#     # print "checking pose_info...", pregnancy_info.pregnancy
+
+#     return render_template("pregnancy.html")
+
+
+@app.route('/pregnancy/<int:pose_id>')
+def pregnancy_safe(pose_id):
+    """Shows pregnancy details for each asana"""
+
+    pregnancy_info = Pose.query.get(pose_id)
+
+    print pregnancy_info, pose_id
+
+    print "checking pose_info...", pregnancy_info.pregnancy
+
+    return render_template("baby.html", pose=pregnancy_info)
+
+
+
+
 #HTML 
 #pose becomes jinja variable
-
-
 
 @app.route('/about', methods=['GET'])
 def about_page():
@@ -194,35 +229,6 @@ def add_to_sequence():
     return jsonify(status="success", id=photo_id)
 
 
-# @app.route("/process_login")
-# def process_login():
-
-#     username = request.args.get("username")
-
-#     existing_user = User.query.filter(User.username == username).first()
-#     if existing_user is None:
-#         flash("Username incorrect. Please re-enter")
-#         return redirect("/")
-#     else:
-#         session["user_id"] = existing_user.user_id
-#         return redirect("/home")
-
-# @app.route("/home")
-# def show_homepage():
-#     """Show homepage of logged in user"""
-
-#     user = User.query.get(session["user_id"])
-
-
-#     return render_template("homepage.html", user=user)
-
-# @app.route("/asanas")
-# def image_list():
-#     """Return homepage."""
-    
-#     return render_template("homepage.html", images=IMAGES)
-
-
 @app.route("/sequence")
 def returns_sequence():
     """Return homepage."""
@@ -231,8 +237,6 @@ def returns_sequence():
     print poses_list
     
     return render_template("sequence.html",poses_list=poses_list)
-
-
 
 @app.route("/random")
 def random_list():

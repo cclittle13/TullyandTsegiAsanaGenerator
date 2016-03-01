@@ -48,8 +48,10 @@
     <div id="gallery">
         {% for image in images %}
                 <div><label><input type="checkbox" name="poses" value="{{ image.name }}">{{ image.name }}</label>
-                <button><a href="/posedetails/{{ image.id }}">More details</a></button>
+                <button><a href="/posedetails/{{ image.id }}">Details</a></button>
+                <button><a href="/pregnancy/{{ image.id }}">Pregnancy</a></button>
                 <img src="{{ image.url }}" alt="Insert im"> </div>
+
                <!--  <button id="{{ image.id }}" class="favorite-btn">&hearts; Favorite</button>
                 <button id="{{ image.id }}" class="favorite-btn">&#9728; Pose Detail</button> -->
              <!--    <input type="submit" class="btn btn-primary"></button> -->
