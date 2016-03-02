@@ -28,7 +28,7 @@ def load_users():
     print "Users"
 
     #yoga_users is a csv file 
-    users_file = open("yoga_users")
+    users_file = open("seed_data/yoga_users")
 
     for line in users_file:
         line = line.rstrip()
@@ -68,7 +68,7 @@ def load_poses():
     print "Poses"
 
     #yoga_users is a csv file 
-    users_file = open("poses.csv")
+    users_file = open("seed_data/poses.csv")
 
     for line in users_file:
         line = line.rstrip()
@@ -135,7 +135,6 @@ if __name__ == "__main__":
     connect_to_db(app)
     db.create_all()
     load_categories(data_dict)
-    # load_poses(data_dict)
     load_poses()
     load_users()
     load_images(images)

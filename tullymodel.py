@@ -1,6 +1,7 @@
 """Models and database functions for Asana Generator project."""
 
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.dialects import postgresql
 # import json 
 # data_dict = json.load("yoga_asanas.json")
 
@@ -22,15 +23,7 @@ class User(db.Model):
     user_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     email = db.Column(db.String(64), nullable=True)
     password = db.Column(db.String(64), nullable=True)
-    # pose_id = db.Column(db.Integer, db.ForeignKey('poses.pose_id'))   
-
-    # # Define relationship to user
-    # image = db.relationship("Image",
-    #                        backref=db.backref("user"))
-
-    # # Define relationship to pose
-    # pose = db.relationship("Pose",
-    #                         backref=db.backref("user"))
+   
 
     def __repr__(self):
         """Provide helpful representation when printed."""
@@ -38,6 +31,21 @@ class User(db.Model):
         return "<User user_id=%s email=%s>" % (self.user_id, self.email)
    
 
+class Sequence(db.Model):
+    """Full saved sequences for user of website."""
+
+    __tablename__ = "sequences"
+
+    seq_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
+    seq_name = db.Column(db.String(500), nullable=True)
+    full_seq = db.Column("data", postgresql.ARRAY(db.Integer))
+   
+
+    def __repr__(self):
+        """Provide helpful representation when printed."""
+
+        return "<User seq_id=%s seq_name=%s>" % (self.seq_id, self.seq_name)
 
 class Pose(db.Model):
     """Asanas for sequence."""
@@ -53,10 +61,7 @@ class Pose(db.Model):
     time = db.Column(db.Integer, nullable=True)
     pregnancy = db.Column(db.Integer, nullable=True )
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
-    image_id = db.Column(db.Integer, db.ForeignKey('images.image_id'))
-
-    image = db.relationship("Image",
-                           backref=db.backref("poses"))
+   
 
     # Define relationship to user
     user = db.relationship("User",
@@ -152,3 +157,4 @@ if __name__ == "__main__":
 
     db.create_all()
     print "Connected to DB."
+

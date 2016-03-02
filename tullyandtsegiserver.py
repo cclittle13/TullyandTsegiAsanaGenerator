@@ -166,6 +166,30 @@ def sanskrit_list():
     return render_template("sanskrit_list.html", pose_info=pose_info)
 
 
+@app.route('/fulllistofasanas')
+def full_asana_list():
+    """Show list of all poses."""
+
+    # pose_info = Pose.query.get(pose_id)
+    pose_info = Pose.query.all()
+    print pose_info
+
+    return render_template("full_list_of_asanas.html", pose_info=pose_info)
+
+
+
+# <div class="well spaced" style="width:50%;">
+#   <h2>Sanskrit to English</h2>
+#   <ul>
+#   {% for pose in pose_info %}
+#     <ul>
+#       <a href="/posedetails/{{ pose.pose_id }}">{{ pose.sanskrit_name }}
+#         {% if pose.sanskrit_name %} , {% endif %}
+#        {{ pose.common_name }}</a>
+#     </ul>
+#   {% endfor %}
+#   </ul>
+
 @app.route('/sanskrit/<int:pose_id>')
 def sanskrit(pose_id):
     """Sanskrit translations"""
