@@ -46,6 +46,13 @@ var myImage = $('#asana_image').attr("src", "cat_balance.jpg");
     {% for pose in poses %}
         <li>{{ pose.common_name }}</li>
     {% endfor %}
+
+    <form action="/users/{{ session['user_id'] }}" method="post">
+
+         <input type="hidden" name="poses" value="{{ pose_id_str }}">
+        Enter a name for your sequence to save it: <input type="text" value="Morning salute" name="seq_name">
+        <input type="submit" value="Save">
+    </form>
 <!-- 
 <a href="http://www.pocketyoga.com/images/thumbnailsbig/box_neutral-tnbig.png"></a>
 

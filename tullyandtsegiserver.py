@@ -13,7 +13,7 @@ from jinja2 import StrictUndefined
 # from ratings
 # from flask import Flask, render_template, request, flash, redirect, session
 from flask_debugtoolbar import DebugToolbarExtension
-from model import db, connect_to_db, Pose, User, Category, Image
+from tullymodel import db, connect_to_db, Pose, User, Category, Image, Sequence
 
 
 app = Flask(__name__)
@@ -241,10 +241,11 @@ def returns_sequence():
     """Return homepage."""
 
     pose_id_list = request.args.getlist("poses")
+    pose_id_str = ",".join(pose_id_list)
     pose_id_list = map(int, pose_id_list)
-    poses = Pose.query.filter(Pose.pose_id.in_(pose_id_list))
-    
-    return render_template("sequence.html",poses=poses)
+    poses = Pose.query.filter(Pose.pose_id.in_(pose_id_list)).all()
+    print pose_id_str
+    return render_template("sequence.html",poses=poses, pose_id_str=pose_id_str)
 
 @app.route("/random")
 def random_list():
@@ -388,6 +389,11 @@ def login_process():
 
     user = User.query.filter_by(email=email).first()
 
+    print user.password, password
+    print user.password == password
+    print type(user.password), type(password)
+    print len(user.password), len(password)
+
     if not user:
         flash("No such user")
         return redirect("/login")
@@ -418,12 +424,27 @@ def user_list():
     return render_template("user_list.html", users=users)
 
 
-@app.route("/users/<int:user_id>")
+@app.route("/users/<int:user_id>", methods=['GET', 'POST'])
 def user_detail(user_id):
     """Show info about user."""
 
+    if request.method == 'POST':
+        poses = request.form["poses"]
+        print poses, type(poses)
+        seq_name = request.form["seq_name"]
+        pose_id_list = map(int, poses.split(","))
+        print pose_id_list
+        new_sequence = Sequence(user_id=user_id, seq_name=seq_name, full_seq=pose_id_list)
+        db.session.add(new_sequence)
+        db.session.commit()
     user = User.query.get(user_id)
-    return render_template("user.html", user=user)
+    sequences_for_user = Sequence.query.filter_by(user_id=user_id).all()
+    sequences_dict = {}
+    for sequence in sequences_for_user:
+        poses = Pose.query.filter(Pose.pose_id.in_(sequence.full_seq)).all()
+        sequences_dict[sequence.seq_name] = [pose.common_name for pose in poses]
+    print sequences_dict
+    return render_template("user.html", user=user, sequences_dict=sequences_dict)
 
 
 

@@ -39,13 +39,17 @@ class Sequence(db.Model):
     seq_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     seq_name = db.Column(db.String(500), nullable=True)
-    full_seq = db.Column("data", postgresql.ARRAY(db.Integer))
+    full_seq = db.Column("poses", postgresql.ARRAY(db.Integer))
+
    
+    user = db.relationship("User",
+                           backref=db.backref("sequences"))
 
     def __repr__(self):
         """Provide helpful representation when printed."""
 
         return "<User seq_id=%s seq_name=%s>" % (self.seq_id, self.seq_name)
+
 
 class Pose(db.Model):
     """Asanas for sequence."""
@@ -60,12 +64,7 @@ class Pose(db.Model):
     image_url = db.Column(db.String(500), nullable=True)
     time = db.Column(db.Integer, nullable=True)
     pregnancy = db.Column(db.Integer, nullable=True )
-    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
-   
 
-    # Define relationship to user
-    user = db.relationship("User",
-                           backref=db.backref("poses"))
 
     def __repr__(self):
         """Provide helpful representation when printed."""

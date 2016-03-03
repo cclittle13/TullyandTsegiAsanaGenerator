@@ -4,6 +4,14 @@
 <div class="well spaced" style="width:97%">
   <h2>{{ user.email }} ({{ user.user_id }})</h2>
 
+
+{% for name, poses in sequences_dict.iteritems() %}
+{{ name }}
+    {% for pose in poses %}
+    <ul>{{ pose }}</ul>
+    {% endfor %}
+{% endfor %}
+
 <!-- <!DOCTYPE html>
 <html> -->
 <style>
