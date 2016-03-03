@@ -76,66 +76,22 @@ def index():
     
     return render_template("welcome.html", images=IMAGES)
 
-#______________________________________________________________________
 
-@app.route("/hello")
-def say_hello():
-    """Save hello to user."""
+# @app.route("/homepage")
+# def homepage():
+#     """Return homepage."""
 
-    return render_template("hello.html")
+#     return render_template("tullyhomepage.html")
 
-@app.route("/posegame")
-def pose_game():
-    """Greet user."""
 
-    player = request.args.get("person")
+@app.route('/about', methods=['GET'])
+def about_page():
+    """Site introduction."""
 
-    # compliments = sample(AWESOMENESS, 3)
+    # rand = random.randrange(0, session.query(Table).count()) 
+    # row = session.query(Table)[rand]
 
-    return render_template("quotes.html")
-                           # user=user,
-                           # poses=poses)
-
-@app.route('/game')
-def show_game_form():
-    
-
-    player = request.args.get("person")
-    answer = request.args.get("playgame")
-    # yogi = request.args.get("yogi")
-    # answer = request.args.get("pickposes")
-
-    if answer == "No":
-        return render_template("goodbye.html",
-                                person=player)
-    else:
-        return render_template("game.html")
-
-@app.route('/madlib', methods=["GET"])
-def show_madlib():
-    category = request.form.get("category")
-    name = request.form.get("common_name")
-    sanskrit = request.form.get("Sanskrit_name")
-    breathe = request.form.get("breathe")
-    time = request.form.get("time")
-    pregnancy = request.form.get("pregnancy")
-    image_url = request.form.get("image_url")
-
-    return render_template("madlib.html",
-                            name=name,
-                            color=color,
-                            noun=noun,
-                            adjective=adjective,
-                            quantity=quantity,
-                            theme=theme)
-
-#__________________________________________________________________
-
-@app.route("/homepage")
-def homepage():
-    """Return homepage."""
-
-    return render_template("tullyhomepage.html")
+    return render_template("about.html")
 
 
 @app.route("/listposes")
@@ -166,7 +122,8 @@ def sanskrit_list():
     return render_template("sanskrit_list.html", pose_info=pose_info)
 
 
-@app.route('/fulllistofasanas')
+
+@app.route("/fulllistofasanas")
 def full_asana_list():
     """Show list of all poses."""
 
@@ -177,18 +134,16 @@ def full_asana_list():
     return render_template("full_list_of_asanas.html", all_poses=all_poses)
 
 
+# @app.route("/contraindications")
+# def pregnancy_safe_list():
+#     """Show list of all poses safe during pregnancy."""
 
-# <div class="well spaced" style="width:50%;">
-#   <h2>Sanskrit to English</h2>
-#   <ul>
-#   {% for pose in pose_info %}
-#     <ul>
-#       <a href="/posedetails/{{ pose.pose_id }}">{{ pose.sanskrit_name }}
-#         {% if pose.sanskrit_name %} , {% endif %}
-#        {{ pose.common_name }}</a>
-#     </ul>
-#   {% endfor %}
-#   </ul>
+#     # pose_info = Pose.query.get(pose_id)
+#     baby_poses = Pose.query.all()
+#     # print pose_info
+
+#     return render_template("contraindications.html", baby_poses=baby_poses)
+
 
 @app.route('/sanskrit/<int:pose_id>')
 def sanskrit(pose_id):
@@ -218,22 +173,11 @@ def pregnancy_safe(pose_id):
 
     pregnancy_info = Pose.query.get(pose_id)
 
-    print pregnancy_info, pose_id
+    # print pregnancy_info, pose_id
 
     print "checking pose_info...", pregnancy_info.pregnancy
 
     return render_template("baby.html", pose=pregnancy_info)
-
-
-
-@app.route('/about', methods=['GET'])
-def about_page():
-    """Site introduction."""
-
-    # rand = random.randrange(0, session.query(Table).count()) 
-    # row = session.query(Table)[rand]
-
-    return render_template("about.html")
 
 
 @app.route("/sequence")
@@ -447,6 +391,60 @@ def user_detail(user_id):
     return render_template("user.html", user=user, sequences_dict=sequences_dict)
 
 
+#______________________________________________________________________
+
+@app.route("/hello")
+def say_hello():
+    """Save hello to user."""
+
+    return render_template("hello.html")
+
+@app.route("/posegame")
+def pose_game():
+    """Greet user."""
+
+    player = request.args.get("person")
+
+    # compliments = sample(AWESOMENESS, 3)
+
+    return render_template("quotes.html")
+                           # user=user,
+                           # poses=poses)
+
+@app.route('/game')
+def show_game_form():
+    
+
+    player = request.args.get("person")
+    answer = request.args.get("playgame")
+    # yogi = request.args.get("yogi")
+    # answer = request.args.get("pickposes")
+
+    if answer == "No":
+        return render_template("goodbye.html",
+                                person=player)
+    else:
+        return render_template("game.html")
+
+@app.route('/madlib', methods=["GET"])
+def show_madlib():
+    category = request.form.get("category")
+    name = request.form.get("common_name")
+    sanskrit = request.form.get("Sanskrit_name")
+    breathe = request.form.get("breathe")
+    time = request.form.get("time")
+    pregnancy = request.form.get("pregnancy")
+    image_url = request.form.get("image_url")
+
+    return render_template("madlib.html",
+                            name=name,
+                            color=color,
+                            noun=noun,
+                            adjective=adjective,
+                            quantity=quantity,
+                            theme=theme)
+
+#__________________________________________________________________
 
 
 
