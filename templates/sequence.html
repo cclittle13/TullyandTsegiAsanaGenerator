@@ -9,12 +9,12 @@
 <p><a href="/sequence"></a></p>
 
 <!-- <p> HELLO </p> -->
-<!-- 
-<img id="test" src="static/images/awkward.png" alt="Insert im">
+
+<!-- <img id="test" src="static/images/awkward.png" alt="Insert im"> -->
 
 <br>
 
-    <img id="asana_image" src="FIXME" alt="make this image work" height="300" width="200">
+    <img id="asana_image" src="static/images/awkward.png" alt="make this image work">
 
     <h3 id="message">Click The Image To Pick A Pose</h3>
 
@@ -31,13 +31,6 @@
 
 
 
-var myImage = $('#asana_image').attr("src", "cat_balance.jpg");
-   $('#revenue')
-
-
-    $('#asana_image').click(function pickPose() {
-        setTimeout(function() {$('#asana_image').attr("src", "static/supine_bound_angle.jpg"); }, 500);
-        setTimeout(function() {$('#asana_image').attr("src", "static/downward_dog_leg_up_kneeling.jpg")}, 1500); -->
 
 
 <!-- for pose in poses_list:
@@ -57,5 +50,16 @@ var myImage = $('#asana_image').attr("src", "cat_balance.jpg");
 <a href="http://www.pocketyoga.com/images/thumbnailsbig/box_neutral-tnbig.png"></a>
 
  -->
+
+<script>
+$('#asana_image').attr("src", "static/images/awkward.png");
+
+
+    $('#asana_image').click(function pickPose() {
+        setTimeout(function() {$('#asana_image').attr("src", "static/images/supine_bound_angle.jpg"); }, 500);
+        setTimeout(function() {$('#asana_image').attr("src", "static/images/awkward.png")}, 1500);
+    });
+</script>
+
 {% endblock %}
 

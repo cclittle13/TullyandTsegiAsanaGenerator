@@ -172,7 +172,7 @@ def full_asana_list():
 
     # pose_info = Pose.query.get(pose_id)
     pose_info = Pose.query.all()
-    print pose_info
+    # print pose_info
 
     return render_template("full_list_of_asanas.html", pose_info=pose_info)
 
