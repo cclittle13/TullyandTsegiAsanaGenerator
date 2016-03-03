@@ -9,16 +9,32 @@
     
 <p><a href="/asanas"></a></p>
 
-<p> ASANAS </p>
+<p><h3>Click Image to Preview Sequence</h3></p>
 
-<img id="test" src="static/images/awkward.png" alt="Insert im"> 
+<br>
 
-<a href="http://www.pocketyoga.com/images/thumbnailsbig/box_neutral-tnbig.png"></a>
+<!-- <img id="test" src="static/images/awkward.png" alt="Insert im"> 
+
+<a href="http://www.pocketyoga.com/images/thumbnailsbig/box_neutral-tnbig.png"></a> -->
+
+<img id="asana_image" src="static/images/awkward.png" >
+
+<script>
+$('#asana_image').attr("src", "static/images/child_traditional (1).png");
+
+
+    $('#asana_image').click(function pickPose() {
+        setTimeout(function() {$('#asana_image').attr("src", "static/images/downward_dog.png"); }, 500);
+        setTimeout(function() {$('#asana_image').attr("src", "static/images/awkward.png")}, 1500);
+    });
+</script>
+
+<br>
 
   <title>Yoga</title>
 
 
-
+<br>
 
 <div class="site-wrapper">
     <div class="site-wrapper-inner">
@@ -27,13 +43,15 @@
 <!
         <h1>Yoga Sequence Generator</h1>
  --> 
-        <p class="lead">Tully</p>
+        <h3><p class="lead">PICK YOUR ASANA SEQUENCE GENERATOR</p></h3>
 
         <a href="/asanas" class="btn btn-lg btn-primary">Generate My Sequence</a>
         <a href="/asanas" class="btn btn-lg btn-primary">Asana Details</a>
         <a href="/asanas" class="btn btn-lg btn-primary">Sanskrit Asana Translation</a>
         <a href="/random" class="btn btn-lg btn-primary"> Random Sequence Generator</a>
-        <a href="/posegame" class="btn btn-lg btn-primary">Asana Game</a>
+        <!-- <a href="/posegame" class="btn btn-lg btn-primary">Asana Game</a> -->
+        <br>
+        <a href="/posegame" class="btn btn-lg btn-primary">Text Pose of the Day</a>
         
 
     </div>

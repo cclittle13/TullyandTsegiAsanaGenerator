@@ -14,9 +14,9 @@
 
 <br>
 
-    <img id="asana_image" src="static/images/awkward.png" alt="make this image work">
-
-    <h3 id="message">Click The Image To Pick A Pose</h3>
+    <!-- <img id="asana_image" src="static/images/awkward.png" alt="make this image work">
+ -->
+    <!-- <h3 id="message">Click The Image To Pick A Pose</h3>
 
     <table class="table">
         <tr>
@@ -27,7 +27,7 @@
                 <button class="btn btn-default" id="supine">Supine</button>
             </td>
             <td class="col-md-2">
-                <button class="btn btn-default" id="cat">Cat</button>
+                <button class="btn btn-default" id="cat">Cat</button> -->
 
 
 
@@ -50,13 +50,14 @@
 <a href="http://www.pocketyoga.com/images/thumbnailsbig/box_neutral-tnbig.png"></a>
 
  -->
+<img id="asana_image" src="static/images/awkward.png" alt="make this image work">
 
 <script>
-$('#asana_image').attr("src", "static/images/awkward.png");
+$('#asana_image').attr("src", "static/images/child_traditional (1).png");
 
 
     $('#asana_image').click(function pickPose() {
-        setTimeout(function() {$('#asana_image').attr("src", "static/images/supine_bound_angle.jpg"); }, 500);
+        setTimeout(function() {$('#asana_image').attr("src", "static/images/downward_dog.png"); }, 500);
         setTimeout(function() {$('#asana_image').attr("src", "static/images/awkward.png")}, 1500);
     });
 </script>

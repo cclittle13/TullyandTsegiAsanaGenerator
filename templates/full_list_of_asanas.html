@@ -2,12 +2,11 @@
 {% block content %}
 
 <div class="well spaced" style="width:50%;">
-  <h2>Sanskrit to English</h2>
+  <h2>All Asanas</h2>
   <ul>
-  {% for pose in pose_info %}
+  {% for pose in all_poses %}
     <ul>
-      <a href="/fulllistofasanas/{{ pose.pose_id }}">{{ pose.sanskrit_name }}
-        {% if pose.sanskrit_name %} , {% endif %}
+      <a href="/fulllistofasanas/{{ pose.pose_id }}">
        {{ pose.common_name }}</a>
     </ul>
   {% endfor %}
@@ -15,4 +14,3 @@
 
 
 {% endblock %}
-
