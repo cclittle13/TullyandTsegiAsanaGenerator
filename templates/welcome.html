@@ -2,7 +2,7 @@
 {% block content %}
 
 <h1>Tully and Tsegi</h1>
-<h1>Yoga Sequence Generator</h1>
+<h1>Asana Sequence Generator</h1>
 <!-- <h1>Website Instructions</h1> -->
 
 <div class="well spaced" style="width:97%">
@@ -52,7 +52,9 @@ $('#asana_image').attr("src", "static/images/child_traditional (1).png");
         <a href="/random" class="btn btn-lg btn-primary"> Random Sequence Generator</a>
         <!-- <a href="/posegame" class="btn btn-lg btn-primary">Asana Game</a> -->
         <a href="/posegame" class="btn btn-lg btn-primary">Text Pose of the Day</a>
-        
+<form id="send_sms">
+<input value="TEXT ME A POSE" type="submit">
+</form>
 
     </div>
 </div>
@@ -60,6 +62,15 @@ $('#asana_image').attr("src", "static/images/child_traditional (1).png");
 <footer>
     <p>Copyright Tully and Tsegi 2016. All rights reserved.</p>
 </footer>
+
+<script type="text/javascript">
+function sendSms(evt) {
+$.get( "/send_message", function( data ) {
+  console.log("Message sent");
+});
+}
+$("#send_sms").submit(sendSms);
+</script>
 
 </body>
 </html>

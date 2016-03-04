@@ -15,6 +15,8 @@ from jinja2 import StrictUndefined
 from flask_debugtoolbar import DebugToolbarExtension
 from tullymodel import db, connect_to_db, Pose, User, Category, Image, Sequence
 
+from twilio.rest import TwilioRestClient
+import os
 
 app = Flask(__name__)
 
@@ -359,6 +361,7 @@ def logout():
     del session["user_id"]
     flash("Logged Out.")
     return redirect("/")
+ 
 
 @app.route("/users")
 def user_list():
@@ -403,13 +406,19 @@ def say_hello():
 def pose_game():
     """Greet user."""
 
+
     player = request.args.get("person")
 
-    # compliments = sample(AWESOMENESS, 3)
-
     return render_template("quotes.html")
-                           # user=user,
-                           # poses=poses)
+
+@app.route("/send_message")
+def send_message():
+    """Send message"""
+
+    send_sms()
+
+    return "Success"
+                           
 
 @app.route('/game')
 def show_game_form():
@@ -445,8 +454,17 @@ def show_madlib():
                             theme=theme)
 
 #__________________________________________________________________
+def send_sms():
+    account_sid = os.environ['TWILIO_ACCOUNT_SID']
+    auth_token = os.environ['TWILIO_AUTH_TOKEN']
+    client = TwilioRestClient(account_sid, auth_token)
 
+    message = client.messages.create(to="+19256428623", 
+                                    from_="+16502821253", 
+                                    body="POSE OF THE DAY!", 
+    media_url="http://www.pocketyoga.com/images/poses/child_traditional.png")
 
+# send_sms()
 
 if __name__ == "__main__":
 
