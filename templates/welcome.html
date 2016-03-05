@@ -51,9 +51,11 @@ $('#asana_image').attr("src", "static/images/child_traditional (1).png");
         <a href="/asanas" class="btn btn-lg btn-primary">Asana Contraindications for Pregnancy</a>
         <a href="/random" class="btn btn-lg btn-primary"> Random Sequence Generator</a>
         <!-- <a href="/posegame" class="btn btn-lg btn-primary">Asana Game</a> -->
-        <a href="/posegame" class="btn btn-lg btn-primary">Text Pose of the Day</a>
+        <!-- <a href="/posegame" class="btn btn-lg btn-primary">Text Pose of the Day</a> -->
+
+<br>
 <form id="send_sms">
-<input value="TEXT ME A POSE" type="submit">
+<input value="Text Pose of the Day" type="submit">
 </form>
 
     </div>
@@ -68,7 +70,7 @@ function sendSms(evt) {
 $.get( "/send_message", function( data ) {
   console.log("Message sent");
 });
-}
+evt.preventDefault()}
 $("#send_sms").submit(sendSms);
 </script>
 

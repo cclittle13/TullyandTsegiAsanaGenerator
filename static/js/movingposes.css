@@ -11,3 +11,13 @@ body {
 h4{
     text-align: left;
 }
+
+.jumbotron {
+    margin-bottom: 0px;
+    background-image: url(/static/img/home6.jpg);
+    background-position: 0% 25%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    text-shadow: black 0.4em 0.4em 0.4em;
+}

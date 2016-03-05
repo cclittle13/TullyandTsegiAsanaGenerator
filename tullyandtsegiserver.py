@@ -186,12 +186,15 @@ def pregnancy_safe(pose_id):
 def returns_sequence():
     """Return homepage."""
 
+    # sequence = save_sequence(request.arg.getlist("poses"))
     pose_id_list = request.args.getlist("poses")
     pose_id_str = ",".join(pose_id_list)
     pose_id_list = map(int, pose_id_list)
     poses = Pose.query.filter(Pose.pose_id.in_(pose_id_list)).all()
     print pose_id_str
     return render_template("sequence.html",poses=poses, pose_id_str=pose_id_str)
+    # return render_template("sequence.html", sequence=sequence)
+
 
 @app.route("/random")
 def random_list():
@@ -454,15 +457,13 @@ def show_madlib():
                             theme=theme)
 
 #__________________________________________________________________
+
 def send_sms():
     account_sid = os.environ['TWILIO_ACCOUNT_SID']
     auth_token = os.environ['TWILIO_AUTH_TOKEN']
     client = TwilioRestClient(account_sid, auth_token)
 
-    message = client.messages.create(to="+19256428623", 
-                                    from_="+16502821253", 
-                                    body="POSE OF THE DAY!", 
-    media_url="http://www.pocketyoga.com/images/poses/child_traditional.png")
+    message = client.messages.create(to="+19256428623", from_="+16502821253", body="POSE OF THE DAY!", media_url="http://www.pocketyoga.com/images/poses/child_traditional.png")
 
 # send_sms()
 
