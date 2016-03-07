@@ -17,7 +17,7 @@
 
         body{
             padding: 2em;
-            font-family: sans-serif;
+            font-family: samarkan;
         }
 
         #gallery {
@@ -38,13 +38,15 @@
     </style>
 </head>
 <body>
-    <h1>ASANAS</h1>
+    <div><h1>ASANAS</h1></div>
 <!--     <img id="test" src="static/images/awkward.png" alt="Insert im"> -->
 
 <div id="gallery">
 <form action="/sequence">
 
-    Check the poses you like:
+    <div><h3>Check the poses to build your sequence:</h3><div>
+        <br>
+        <br>
     <div id="gallery">
         {% for pose in poses %}
                 <div><label><input type="checkbox" name="poses" value="{{ pose.pose_id }}">{{ pose.common_name }}</label>
@@ -56,7 +58,7 @@
         {% endfor %}
     
      <!-- <input type="submit">SEQUENCE> -->
-     <button name="subject" type="submit" value="GenerateMySequence">Generate My Sequence</button>
+     <button name="subject" class="btn btn-lg btn-primary" type="submit" value="GenerateMySequence">Generate My Sequence</button>
      
          </div>
     </form>   

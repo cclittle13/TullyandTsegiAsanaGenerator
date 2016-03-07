@@ -1,6 +1,13 @@
+@font-face {
+    font-family: Samarkan;
+    src: url(../fonts/SAMARN__.TTF);
+}
+
 body {
   padding-top: 50px;
-  font-family: 'Raleway', sans-serif;
+  font-family: Samarkan;
+  padding: 40px 15px;
+  text-align: center;
 }
 
 .starter-template {
@@ -12,12 +19,35 @@ h4{
     text-align: left;
 }
 
+
+.img-rounded {
+
+}
+
+
 .jumbotron {
+    /*background: url(../images/preg.jpg) no-repeat center center fixed;
+   -webkit-background-size: cover; 
+   -moz-background-size: cover; 
+   -o-background-size: cover; 
+   background-size: cover; */
     margin-bottom: 0px;
-    background-image: url(/static/img/home6.jpg);
+    background-image: url(../images/tullyyoga.jpg);
     background-position: 0% 25%;
     background-size: cover;
     background-repeat: no-repeat;
     color: white;
     text-shadow: black 0.4em 0.4em 0.4em;
 }
+
+.extending {
+
+}
+
+body {
+   background: url(/static/) no-repeat center center fixed;
+   -webkit-background-size: cover; 
+   -moz-background-size: cover; 
+   -o-background-size: cover; 
+   background-size: cover; 
+    }

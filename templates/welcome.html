@@ -5,19 +5,47 @@
 <h1>Asana Sequence Generator</h1>
 <!-- <h1>Website Instructions</h1> -->
 
-<div class="well spaced" style="width:97%">
-    
-<p><a href="/asanas"></a></p>
+<!-- <img src="preg.jpg" class="img-rounded" width="304" height="236"> -->
 
-<p><h3>Click Image to Preview Asanas</h3></p>
+<div class="jumbotron">
+    <div class="container" class="well spaced" style="width:90%, height:60%">
+        <br>
+        <br>
+      
+     <h1 style="color: white;"></h1>
+          <br>
+        <div class="search-box">
+          <form action="/search" method='POST'>
+            <div id="imaginary_container">
+                <div class="input-group stylish-input-group">
+                    <p><a href="/asanas"></a></p>
+
+                   <!--  <p><h3>Click Image to Preview Asanas</h3></p>
+
+<img id="asana_image" src="static/images/awkward.png" > -->
+
+<script>
+// $('#asana_image').attr("src", "static/images/child_traditional (1).png");
+
+
+//     $('#asana_image').click(function pickPose() {
+//         setTimeout(function() {$('#asana_image').attr("src", "static/images/downward_dog.png"); }, 500);
+//         setTimeout(function() {$('#asana_image').attr("src", "static/images/awkward.png")}, 1500);
+//     });
+// </script>
 
 <br>
 
-<!-- <img id="test" src="static/images/awkward.png" alt="Insert im"> 
+                    <br>
+                    </span>
+                </div>
+            </div>
+          </form>
+        </div>
 
-<a href="http://www.pocketyoga.com/images/thumbnailsbig/box_neutral-tnbig.png"></a> -->
+    </div>
+    </div> 
 
-<img id="asana_image" src="static/images/awkward.png" >
 
 <script>
 $('#asana_image').attr("src", "static/images/child_traditional (1).png");
@@ -50,13 +78,9 @@ $('#asana_image').attr("src", "static/images/child_traditional (1).png");
         <a href="/asanas" class="btn btn-lg btn-primary">Sanskrit Asana Translation</a>
         <a href="/asanas" class="btn btn-lg btn-primary">Asana Contraindications for Pregnancy</a>
         <a href="/random" class="btn btn-lg btn-primary"> Random Sequence Generator</a>
-        <!-- <a href="/posegame" class="btn btn-lg btn-primary">Asana Game</a> -->
-        <!-- <a href="/posegame" class="btn btn-lg btn-primary">Text Pose of the Day</a> -->
-
-<br>
-<form id="send_sms">
-<input value="Text Pose of the Day" type="submit">
-</form>
+        <form id="send_sms">
+        <input value="Text Pose of the Day" class="btn btn-lg btn-primary" type="submit">
+        </form>
 
     </div>
 </div>
@@ -79,3 +103,19 @@ $("#send_sms").submit(sendSms);
 
 
 {% endblock %}
+
+
+
+  <!--   <div class="well spaced" style="width:97%"> -->
+        
+  <!--   <p><a href="/asanas"></a></p>
+
+    <p><h3>Click Image to Preview Asanas</h3></p>
+
+    <br>
+ -->
+<!-- <img id="test" src="static/images/awkward.png" alt="Insert im"> 
+
+<a href="http://www.pocketyoga.com/images/thumbnailsbig/box_neutral-tnbig.png"></a> -->
+
+    <!-- <img id="asana_image" src="static/images/awkward.png" > -->
