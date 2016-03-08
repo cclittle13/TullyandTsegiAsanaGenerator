@@ -397,23 +397,6 @@ def user_detail(user_id):
     return render_template("user.html", user=user, sequences_dict=sequences_dict)
 
 
-#______________________________________________________________________
-
-@app.route("/hello")
-def say_hello():
-    """Save hello to user."""
-
-    return render_template("hello.html")
-
-@app.route("/posegame")
-def pose_game():
-    """Greet user."""
-
-
-    player = request.args.get("person")
-
-    return render_template("quotes.html")
-
 @app.route("/send_message")
 def send_message():
     """Send message"""
@@ -421,42 +404,7 @@ def send_message():
     send_sms()
 
     return "Success"
-                           
-
-@app.route('/game')
-def show_game_form():
-    
-
-    player = request.args.get("person")
-    answer = request.args.get("playgame")
-    # yogi = request.args.get("yogi")
-    # answer = request.args.get("pickposes")
-
-    if answer == "No":
-        return render_template("goodbye.html",
-                                person=player)
-    else:
-        return render_template("game.html")
-
-@app.route('/madlib', methods=["GET"])
-def show_madlib():
-    category = request.form.get("category")
-    name = request.form.get("common_name")
-    sanskrit = request.form.get("Sanskrit_name")
-    breathe = request.form.get("breathe")
-    time = request.form.get("time")
-    pregnancy = request.form.get("pregnancy")
-    image_url = request.form.get("image_url")
-
-    return render_template("madlib.html",
-                            name=name,
-                            color=color,
-                            noun=noun,
-                            adjective=adjective,
-                            quantity=quantity,
-                            theme=theme)
-
-#__________________________________________________________________
+                    
 
 def send_sms():
     account_sid = os.environ['TWILIO_ACCOUNT_SID']

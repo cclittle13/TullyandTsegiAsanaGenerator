@@ -1,15 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1 class="big-sanskrit">Tully and Tsegi</h1>
-<h1 class="big-sanskrit">Asana Sequence Generator</h1>
+<h1 class="blue-sanskrit">Tully and Tsegi</h1>
+<h1 class="blue-sanskrit">Asana Sequence Generator</h1>
+<br>
+<br>
 <!-- <h1>Website Instructions</h1> -->
 
 <!-- <img src="preg.jpg" class="img-rounded" width="304" height="236"> -->
-
 <div>
     <div class="container" class="well spaced" style="width:90%, height:60%">
-        <img  class="img-center" src="/static/images/tullyyoga.jpg">
+        <img  class="img-center" src="/static/images/goddesspose.jpg">
         <br>
         <br>
       
@@ -20,42 +21,15 @@
             <div id="imaginary_container">
                 <div class="input-group stylish-input-group">
                     <p><a href="/asanas"></a></p>
-                    <br>
-                    <br>
-                </div>
+                    
             </div>
           </form>
         </div>
 
     </div>
     </div> 
-
-
-<script>
-$('#asana_image').attr("src", "static/images/child_traditional (1).png");
-
-
-    $('#asana_image').click(function pickPose() {
-        setTimeout(function() {$('#asana_image').attr("src", "static/images/downward_dog.png"); }, 500);
-        setTimeout(function() {$('#asana_image').attr("src", "static/images/awkward.png")}, 1500);
-    });
-</script>
-
-<script>
-// $('#asana_image').attr("src", "static/images/child_traditional (1).png");
-
-
-//     $('#asana_image').click(function pickPose() {
-//         setTimeout(function() {$('#asana_image').attr("src", "static/images/downward_dog.png"); }, 500);
-//         setTimeout(function() {$('#asana_image').attr("src", "static/images/awkward.png")}, 1500);
-//     });
-// </script>
-
 <br>
-
   <title>Yoga</title>
-
-
 <br>
 
 <div class="site-wrapper">
@@ -65,12 +39,12 @@ $('#asana_image').attr("src", "static/images/child_traditional (1).png");
 <!
         <h1>Yoga Sequence Generator</h1>
  --> 
-        <h2><p class="sanskrit">ASANA SEQUENCE GENERATOR FEATURES</p></h2>
+        <h2><p class="gray-sanskrit">ASANA SEQUENCE GENERATOR FEATURES;</p></h2>
         <br>
         <a href="/asanas" class="btn btn-lg btn-primary">Generate My Sequence</a>
         <a href="/asanas" class="btn btn-lg btn-primary">Asana Details</a>
         <a href="/asanas" class="btn btn-lg btn-primary">Sanskrit Asana Translation</a>
-        <a href="/asanas" class="btn btn-lg btn-primary">Asana Contraindications for Pregnancy</a>
+        <a href="/asanas" class="btn btn-lg btn-primary">Asana Contraindications</a>
         <a href="/random" class="btn btn-lg btn-primary"> Random Sequence Generator</a>
         <br>
         <br>
@@ -85,7 +59,7 @@ $('#asana_image').attr("src", "static/images/child_traditional (1).png");
 <br>
 
 <footer>
-    <p class="sanskrit">Copyright Tully and Tsegi 2016. All rights reserved.</p>
+    <p><h4><div class="gray-sanskrit" style="width:97%">Copyright Tully and Tsegi 2016. All rights reserved.</p><h4></div>
 </footer>
 
 <script type="text/javascript">
@@ -100,6 +74,25 @@ $("#send_sms").submit(sendSms);
 </body>
 </html>
 
+
+<script>
+$('#asana_image').attr("src", "static/images/child_traditional (1).png");
+
+
+    $('#asana_image').click(function pickPose() {
+        setTimeout(function() {$('#asana_image').attr("src", "static/images/downward_dog.png"); }, 500);
+        setTimeout(function() {$('#asana_image').attr("src", "static/images/awkward.png")}, 1500);
+    });
+</script>
+<script>
+// $('#asana_image').attr("src", "static/images/child_traditional (1).png");
+
+
+//     $('#asana_image').click(function pickPose() {
+//         setTimeout(function() {$('#asana_image').attr("src", "static/images/downward_dog.png"); }, 500);
+//         setTimeout(function() {$('#asana_image').attr("src", "static/images/awkward.png")}, 1500);
+//     });
+// </script>
 
 {% endblock %}
 

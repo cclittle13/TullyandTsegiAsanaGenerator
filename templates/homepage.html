@@ -6,6 +6,12 @@
   <input type="submit">
 </form> -->
 
+
+<!-- .spaced {
+          margin-left:20px; 
+          margin-top: 20px;
+        }
+ -->
 <head>
     <meta charset="UTF-8">
     <title>Asana List with details</title>
@@ -14,46 +20,25 @@
     <script src="/static/js/favorites.js"></script>
 
     <style>
-
-        body{
-            padding: 2em;
-            font-family: samarkan;
-        }
-
-        #gallery {
-        }
-
-        #gallery > div {
-            width: 20%;
-            display: inline-block;
-            margin: 0 2em 2em 0;
-        }
-
-        #gallery > div > img {
-            height: 150px;
-            margin-bottom: 10px;
-            display: block;
-        }
-
     </style>
 </head>
 <body>
-    <div><h1>ASANAS</h1></div>
+    <div><h1 class= "big-sanskrit">ASANAS</h1></div>
 <!--     <img id="test" src="static/images/awkward.png" alt="Insert im"> -->
 
 <div id="gallery">
 <form action="/sequence">
 
-    <div><h3>Check the poses to build your sequence:</h3><div>
+    <div><h3 class="gray-sanskrit">Check the poses to build your sequence:</h3><div>
         <br>
         <br>
     <div id="gallery">
         {% for pose in poses %}
                 <div><input type="checkbox" class="css-checkbox" id="{{ pose.pose_id }}" name="poses" value="{{ pose.pose_id }}"></input>
                     <label for="{{ pose.pose_id }}" class="css-label">{{ pose.common_name }}</label>
-                <button><a href="/posedetails/{{ pose.pose_id }}">Details</a></button>
-                <button><a href="/pregnancy/{{ pose.pose_id }}">Pregnancy</a></button>
-                <button><a href="/posedetails/{{ pose.pose_id }}">Sanskrit</a></button>
+                <button><a class="sanskrit" href="/posedetails/{{ pose.pose_id }}">Details</a></button>
+                <button><a class="sanskrit" href="/pregnancy/{{ pose.pose_id }}">Pregnancy</a></button>
+                <button><a class="sanskrit" href="/posedetails/{{ pose.pose_id }}">Sanskrit</a></button>
                 <img src="{{ pose.image_url }}" alt="Insert im"> </div>
 
         {% endfor %}

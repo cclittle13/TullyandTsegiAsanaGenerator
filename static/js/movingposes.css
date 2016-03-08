@@ -7,6 +7,8 @@ body {
   padding-top: 50px;
   padding: 40px 15px;
   text-align: center;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 400;
 }
 
 .css-label{
@@ -14,16 +16,63 @@ body {
     font-weight: 400;
 }
 
+.josefin {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 24px;
+}
+
 button {
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 400;
 }
 
-.sanskrit  {
+.blue-sanskrit  {
     font-family: Samarkan;
-   /* font-size: 72px;*/
+    color: gray;
+    font-size: 72px;
 }
 
+.gray-sanskrit  {
+    font-family: Samarkan;
+    color: gray;
+}
+
+.sanskrit  {
+    font-family: Samarkan;
+/*    font-size: 18px;*/
+}
+
+/*.navbar-nav {
+    font-family: Samarkan;
+    font color= "blue";*/
+   /* font color="red"
+}*/
+
+/*body{
+    padding: 2em;
+    font-family: samarkan;
+}*/
+
+#gallery {
+}
+
+#gallery > div {
+    width: 20%;
+    display: inline-block;
+    margin: 0 2em 2em 0;
+}
+
+#gallery > div > img {
+    height: 150px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+
+/*.little {
+    font-family: Samarkan;
+    text-align: center;
+    font-size: 24px;*/
 
 .big-sanskrit {
     font-family: Samarkan;
@@ -36,7 +85,7 @@ button {
 }
 
 h4{
-    text-align: left;
+    text-align: center;
 }
 
 
@@ -51,21 +100,15 @@ h4{
     width: 50%;
 }
 
+h3 {}
 
 
 .jumbotron {
-    /*background: url(../images/preg.jpg) no-repeat center center fixed;
+    background: url(../images/preg.jpg) no-repeat center center fixed;
    -webkit-background-size: cover; 
    -moz-background-size: cover; 
    -o-background-size: cover; 
-   background-size: cover; */
-    margin-bottom: 0px;
-    background-image: url(../images/tullyyoga.jpg);
-    background-position: 0% 25%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    color: white;
-    text-shadow: black 0.4em 0.4em 0.4em;
+   background-size: cover; 
 }
 
 .extending {
@@ -119,4 +162,6 @@ input[type=checkbox].css-checkbox + label.css-label {
 input[type=checkbox].css-checkbox:checked + label.css-label {
                         background-position: 0 -15px;
                     }
+
+
 

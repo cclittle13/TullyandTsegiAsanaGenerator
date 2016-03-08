@@ -3,7 +3,7 @@
 
 
 <div class="well spaced" style="width:97%">
-<h1>SEQUENCE PAGE </h1>
+<h1 class="big-sanskrit">SEQUENCE PAGE </h1>
 <!-- <h1>Website Instructions</h1> -->
 <script src="https://code.jquery.com/jquery.js"></script>
 <p><a href="/sequence"></a></p>
@@ -37,13 +37,14 @@
     display pose  -->
 <!-- add styling for display -->
     {% for pose in poses %}
-        <li>{{ pose.common_name }}</li>
+        <h4><ul>{{ pose.common_name }}</ul></h4>
+        <br>
     {% endfor %}
 
     <form action="/users/{{ session['user_id'] }}" method="post">
 
-         <input type="hidden" name="poses" value="{{ pose_id_str }}">
-        Enter a name for your sequence to save it: <input type="text" value="Heart Chakra" name="seq_name">
+         <input class="big-sanskrit" type="hidden" name="poses" value="{{ pose_id_str }}"><h4 class="sanskrit">
+        Enter a name for your sequence to save it: </h4><input class="sanskrit" type="text" value="Heart Chakra" name="seq_name">
         <input type="submit" value="Save">
     </form>
 <!-- 

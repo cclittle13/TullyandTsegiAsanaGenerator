@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="well spaced" style="width:50%;">
-  <h2>All Asanas</h2>
+<div class="well spaced" style="width:90%;">
+  <h2 class="big-sanskrit">All Asanas</h2>
+  <br>
   <ul>
   {% for pose in all_poses %}
     <ul>
-      <a href="/posedetails/{{ pose.pose_id }}">
-       {{ pose.common_name }}</a>
+      <h5><a href="/posedetails/{{ pose.pose_id }}">
+       {{ pose.common_name }}</a></h5>
     </ul>
   {% endfor %}
   </ul>
