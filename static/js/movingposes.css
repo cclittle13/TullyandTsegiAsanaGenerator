@@ -9,9 +9,21 @@ body {
   text-align: center;
 }
 
-.sanskrit {
-    font-family: Samarkan;
+.css-label{
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 400;
 }
+
+button {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 400;
+}
+
+.sanskrit  {
+    font-family: Samarkan;
+   /* font-size: 72px;*/
+}
+
 
 .big-sanskrit {
     font-family: Samarkan;
@@ -78,7 +90,7 @@ label.css-label {
             user-select: none;
         }
 
-/*input[type=checkbox].css-checkbox {
+input[type=checkbox].css-checkbox {
                         position:absolute; 
                         z-index:-1000; 
                         left:-1000px; 
@@ -89,7 +101,7 @@ label.css-label {
                         margin:-1px; 
                         padding:0; 
                         border:0;
-                    }*/
+                    }
 
 input[type=checkbox].css-checkbox + label.css-label {
                         padding-left:20px;
