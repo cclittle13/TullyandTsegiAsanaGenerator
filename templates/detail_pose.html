@@ -2,15 +2,14 @@
 
 {% block content %}
 
-    {{ pose.category }}
+    <h4 class="gray-sanskrit">{{ pose.category }}</h4>
 
-    <br>
+    
+    <h4 class="gray-sanskrit">{{ pose.common_name }}</h5>
 
-    {{ pose.common_name }}
-
-    <br>
+  
     <div id="sanskrit_name" style="display: none"> 
-    {{ pose.sanskrit_name }}
+    <h4 class="gray-sanskrit">{{ pose.sanskrit_name }}</h3>
     </div> 
     <button class="btn btn-default" id="toggle_sanskrit_button">Sanskrit</button>
 
@@ -19,21 +18,22 @@
         $('#sanskrit_name').toggle();
     });
     </script>
-    <br>
+    
 
-    {{ pose.breathe }}
+    <h4 class="gray-sanskrit">{{ pose.breathe }}</h4>
 
-    <br>
-    {{ pose.time }}
+    
+    <h4 class="gray-sanskrit">{{ pose.time }}</h4>
 
-    <br>
+    
 
-    {{ pose. pregnancy }}
+    <h4 class="gray-sanskrit">{{ pose. pregnancy }}</h4>
 
-    <br>
+    
 
     <img src="{{ pose.image_url }}">
 
+    <br>
     <br>
 
     <div class="site-wrapper-inner">

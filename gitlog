@@ -1,0 +1,210 @@
+commit de2da12bc1d51414c2e9e7fe29c7894560af16f9
+Author: U-SEAGATE\313283 <313283@FRE-U313283L001.ad.seagate.com>
+Date:   Tue Mar 8 15:28:30 2016 -0800
+
+    styling changes
+
+commit 1ff4bb73d95b4ddd095b7773eb178bf327c22884
+Author: U-SEAGATE\313283 <313283@FRE-U313283L001.ad.seagate.com>
+Date:   Mon Mar 7 16:39:01 2016 -0800
+
+    google font styling
+
+commit a249163a60e13f735b811ca1434b0af5312fe40b
+Author: U-SEAGATE\313283 <313283@FRE-U313283L001.ad.seagate.com>
+Date:   Mon Mar 7 16:16:06 2016 -0800
+
+    Monday styling
+
+commit 8843d7aee0137b9b0554bfbc67d81ff0a6e5ab99
+Author: U-SEAGATE\313283 <313283@FRE-U313283L001.ad.seagate.com>
+Date:   Mon Mar 7 15:24:05 2016 -0800
+
+    heart checkbox styling
+
+commit 2994f1b0c0bf0c7156f32e6e0857511a5f1871c7
+Author: U-SEAGATE\313283 <313283@FRE-U313283L001.ad.seagate.com>
+Date:   Mon Mar 7 13:52:09 2016 -0800
+
+    adding styling
+
+commit 489504fc7709a95441ebda81e20e2432933a2e30
+Author: U-SEAGATE\313283 <313283@FRE-U313283L001.ad.seagate.com>
+Date:   Sat Mar 5 07:15:43 2016 -0800
+
+    Notes on testing, changes from Friday
+
+commit 4d4680926d5e69cf19ddb05e7d89876ad3a1b82d
+Author: U-SEAGATE\313283 <313283@FRE-U313283L001.ad.seagate.com>
+Date:   Thu Mar 3 17:29:34 2016 -0800
+
+    Added AJAX request using jQuery for twilio sms messgae for POSE OF THE DAY
+
+commit cd2bfc080db0111fbd820899fa6150f1be44bc76
+Author: Hackbright Student <info@hackbrightacademy.com>
+Date:   Thu Mar 3 09:37:31 2016 -0800
+
+    added .sql
+
+commit 02c9e7164636fefe73eaceb10d5acd3c47828f22
+Author: Hackbright Student <info@hackbrightacademy.com>
+Date:   Thu Mar 3 08:59:30 2016 -0800
+
+    Updated requirements
+
+commit 3f5b20dc0f34ea0a99dc9391c16ff87b0ad9fb86
+Author: Hackbright Student <info@hackbrightacademy.com>
+Date:   Thu Mar 3 08:57:04 2016 -0800
+
+    Ready to transfer
+
+commit d9ebd98fab4a77676db20e472cf81db7e1584946
+Author: Hackbright Student <info@hackbrightacademy.com>
+Date:   Wed Mar 2 17:29:11 2016 -0800
+
+    adding js images to welcome page
+
+commit 842afabceb6766f94849d98cb291035efbed4096
+Author: Hackbright Student <info@hackbrightacademy.com>
+Date:   Wed Mar 2 16:56:40 2016 -0800
+
+    adding js images
+
+commit ef40e4db7b359d78f9beee0ada598b1e1148c298
+Author: Hackbright Student <info@hackbrightacademy.com>
+Date:   Wed Mar 2 16:39:06 2016 -0800
+
+    Wednesday 3_2
+
+commit 94a90367587d5c3d3de070d7dc17ba0435151276
+Author: Hackbright Student <info@hackbrightacademy.com>
+Date:   Tue Mar 1 18:29:08 2016 -0800
+
+    HTML work
+
+commit 43a1d4a4ef8d0637c7322f7a1bafd88934ac1c0e
+Author: Hackbright Student <info@hackbrightacademy.com>
+Date:   Tue Mar 1 18:16:27 2016 -0800
+
+    Tuesday 3_1
+
+commit 80851580348c58d9f774790862fbaa2c14e6c584
+Merge: a4425a9 479c586
+Author: Hackbright Student <info@hackbrightacademy.com>
+Date:   Tue Mar 1 16:02:21 2016 -0800
+
+    Merge branch 'master' of https://github.com/cclittle13/TullyandTsegiAsanaGenerator
+
+commit a4425a9043b0bb91928ab94df123f5629278155b
+Author: Hackbright Student <info@hackbrightacademy.com>
+Date:   Tue Mar 1 15:56:37 2016 -0800
+
+    Working random, sequence generator, details, sanskrit, user, register, profile
+
+commit 479c586a4dfa1eab55a664ee9250c456747e601f
+Author: Chelsea C. Little <cclittle13@hotmail.com>
+Date:   Mon Feb 29 22:04:19 2016 -0800
+
+    Delete skills.txt
+
+commit fa5ced58d9697689c28bbfecf55e87d10ba62ebe
+Author: Hackbright Student <info@hackbrightacademy.com>
+Date:   Mon Feb 29 18:44:29 2016 -0800
+
+    Monday
+
+commit 449500f75e96c1e049871eaebccc55a8b3c6b313
+Author: Hackbright Student <info@hackbrightacademy.com>
+Date:   Mon Feb 29 17:58:18 2016 -0800
+
+    Monday 2_29
+
+commit 1d503eef85a98bb588b2a070ac2caf97997ecc9d
+Author: Hackbright Student <info@hackbrightacademy.com>
+Date:   Fri Feb 26 20:10:25 2016 -0800
+
+    friday changes
+
+commit 35eda1a10f25a8cadbb01ca24b0e968187dbe6ad
+Author: Hackbright Student <info@hackbrightacademy.com>
+Date:   Fri Feb 26 13:21:54 2016 -0800
+
+    Working random sequence generator!
+
+commit 85f00055017d06cb962789862f6b1cb8b111df33
+Author: Hackbright Student <info@hackbrightacademy.com>
+Date:   Thu Feb 25 17:49:50 2016 -0800
+
+    Login, Register, Logout, DB querying for poses, added user profile, added asana details pages
+
+commit 0466ccccfab28efab0c2dc0b309a5ebe6b0c9874
+Author: Hackbright Student <info@hackbrightacademy.com>
+Date:   Thu Feb 25 15:21:25 2016 -0800
+
+    Thursday, working seed file and data model
+
+commit 2c2aafe1538c827f4590d3345b9639a38ffda7a1
+Author: Hackbright Student <info@hackbrightacademy.com>
+Date:   Wed Feb 24 17:20:43 2016 -0800
+
+    database seed files in progress
+
+commit a0175008b3cee81a45a6475bb84052280120a86e
+Author: Hackbright Student <info@hackbrightacademy.com>
+Date:   Wed Feb 24 17:04:19 2016 -0800
+
+    poses.txt in progress
+
+commit ac14ec3bb57d891773b812b0247e899b11b54a3b
+Author: Hackbright Student <info@hackbrightacademy.com>
+Date:   Wed Feb 24 16:51:06 2016 -0800
+
+    Wednesday
+
+commit ff892cf7283c33d8266b9249ada6546c1876968b
+Author: Hackbright Student <info@hackbrightacademy.com>
+Date:   Mon Feb 22 12:17:52 2016 -0800
+
+    Monday
+
+commit b5321a97c3e6f17e11abba657ad15c087216b1d7
+Author: Hackbright Student <info@hackbrightacademy.com>
+Date:   Fri Feb 19 14:51:55 2016 -0800
+
+    notes added
+
+commit 5b5b38764f09973d95b91851cbcc1bceeb0d1bc7
+Author: Hackbright Student <info@hackbrightacademy.com>
+Date:   Thu Feb 18 14:37:14 2016 -0800
+
+    added new files
+
+commit 2c1471b813f5d798bde6030f8079aca766cebfe2
+Author: Hackbright Student <info@hackbrightacademy.com>
+Date:   Thu Feb 18 14:36:35 2016 -0800
+
+    in progress
+
+commit 515ab7ed8b06f4a103f5eb69bb73076a9b7de1d6
+Author: Hackbright Student <info@hackbrightacademy.com>
+Date:   Mon Feb 15 15:46:51 2016 -0800
+
+    db work
+
+commit 9579dd9dbe4eed282e3743db26dc88ba8fcd7c00
+Author: Hackbright Student <info@hackbrightacademy.com>
+Date:   Fri Feb 12 18:08:59 2016 -0800
+
+    Friday 2/12
+
+commit d092426c9c7d543ec9e91a79aa735e7641a85ad0
+Author: Hackbright Student <info@hackbrightacademy.com>
+Date:   Mon Feb 8 16:36:07 2016 -0800
+
+    Adding db data and py file
+
+commit 2e7f0b0fcc01929457bbdc468f17b43246cae4bf
+Author: Hackbright Student <info@hackbrightacademy.com>
+Date:   Mon Feb 8 16:30:24 2016 -0800
+
+    First commit 2_8_16
